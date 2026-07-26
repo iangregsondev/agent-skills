@@ -13,11 +13,12 @@ install them into, under Claude Code or any other Agent-Skills-standard harness.
 
 ## Skills
 
-| Skill                                                             | Bucket      | What it does                                                                       |
-| ----------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------- |
-| [`dep-updates-combiner`](skills/engineering/dep-updates-combiner) | engineering | Collapses many open dependency-update PRs into one branch and PR, so CI runs once. |
-| [`tdd`](skills/engineering/tdd)                                   | engineering | Test-driven development gated on user approval of the failing test.                |
-| [`mentor`](skills/learning/mentor)                                | learning    | The agent writes no code and coaches instead, so you type every line yourself.     |
+| Skill                                                             | Bucket      | What it does                                                                           |
+| ----------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| [`changeset`](skills/engineering/changeset)                       | engineering | Writes a changeset file directly, since the interactive prompts an agent can't answer. |
+| [`dep-updates-combiner`](skills/engineering/dep-updates-combiner) | engineering | Collapses many open dependency-update PRs into one branch and PR, so CI runs once.     |
+| [`tdd`](skills/engineering/tdd)                                   | engineering | Test-driven development gated on user approval of the failing test.                    |
+| [`mentor`](skills/learning/mentor)                                | learning    | The agent writes no code and coaches instead, so you type every line yourself.         |
 
 ## Installation
 
@@ -27,7 +28,7 @@ Two routes, reading the same files.
 files into your project, unnamespaced:
 
 ```bash
-npx skills add iangregsondev/agent-skills            # all of them
+npx skills add iangregsondev/agent-skills             # all of them
 npx skills add iangregsondev/agent-skills --skill tdd # just one
 ```
 
