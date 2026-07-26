@@ -1,0 +1,69 @@
+name: Skill proposal
+description: Propose a new skill, or a change to an existing one.
+title: "feat: "
+labels: ["enhancement", "skill"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues first.
+
+        For CI, tooling, docs or repo configuration, use the **Tooling or repo change** template instead.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you proposing?
+      options:
+        - A new skill
+        - A change to an existing skill
+    validations:
+      required: true
+
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: The skill's name, or a proposed one.
+      placeholder: skill-name
+    validations:
+      required: false
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve?
+      description: >
+        Describe the situation you keep hitting. A skill earns its place by
+        encoding a process you repeat, not by being a good idea in principle.
+    validations:
+      required: true
+
+  - type: textarea
+    id: process
+    attributes:
+      label: What should the agent do differently?
+      description: >
+        Roughly, the steps you want it to follow — and how you'd know it worked.
+    validations:
+      required: true
+
+  - type: textarea
+    id: triggers
+    attributes:
+      label: When should it fire?
+      description: >
+        The situations that should trigger it. Distinct situations, not synonyms
+        for the same one.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: agnostic
+    attributes:
+      label: Portability
+      options:
+        - label: >
+            This can be described without naming a language, test runner, package
+            manager, or directory layout.
+          required: false

@@ -1,0 +1,68 @@
+name: Bug report
+description: A skill misbehaves, or something in the repo is broken.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues first.
+
+        **Do not report security vulnerabilities here** — use
+        [private reporting](https://github.com/iangregsondev/agent-skills/security/advisories/new)
+        instead. See [SECURITY.md](../blob/main/SECURITY.md).
+
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: Which skill? Leave blank if this is about the repo itself.
+      placeholder: skill-name
+    validations:
+      required: false
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did the agent actually do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: What you asked
+      description: >
+        The exact wording you used. Skill invocation is a model judgment rather
+        than a keyword match, so the phrasing matters.
+      render: text
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: main @ abc1234
+    validations:
+      required: false
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: How is it installed?
+      options:
+        - npx skills add (loose skills)
+        - Claude Code plugin (marketplace)
+        - Cloned the repo directly
+        - Not sure
+    validations:
+      required: false

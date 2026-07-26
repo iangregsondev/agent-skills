@@ -1,0 +1,65 @@
+name: Tooling or repo change
+description: CI, build, dependencies, docs, or repository configuration.
+title: "chore: "
+labels: ["chore"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues first.
+
+        To propose a skill, use the **Skill proposal** template instead.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - CI or workflows
+        - Build or toolchain
+        - Dependencies
+        - Repository settings
+        - Documentation
+        - Tests or validation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong or missing?
+      description: >
+        The current behaviour, and what it costs. Include the failing command or
+        output where there is one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What should change?
+      description: >
+        The concrete change. If it spans several files or settings, list them.
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: How will we know it worked?
+      description: >
+        The command that should pass, or the observable state that should differ.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: reconfiguration
+    attributes:
+      label: Does this need changes outside the repository?
+      description: >
+        Repository settings, org rulesets, or third-party services are not files
+        and will not arrive in a pull request. Flag them so they are not lost.
+      options:
+        - label: This needs a repository or organisation setting changed as well.
+          required: false

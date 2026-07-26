@@ -1,0 +1,42 @@
+# Dependabot version updates.
+#
+# Security updates and alerts are repository settings and run without this file —
+# this only adds routine version bumps.
+#
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # package.json + pnpm-lock.yaml. Versions live in pnpm-workspace.yaml under
+  # `catalog:`; Dependabot understands catalogs and edits that file directly.
+  #
+  # Do not add a `dependency-type` filter here — catalog entries are reported as
+  # `production` regardless of where they are declared, so a `development` filter
+  # would silently skip every dependency in this repo.
+  # See dependabot/dependabot-core#14824.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+
+  # Actions pinned in .github/workflows/
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      actions:
+        patterns:
+          - "*"
