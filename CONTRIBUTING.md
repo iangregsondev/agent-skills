@@ -119,10 +119,27 @@ You can run the whole thing locally first:
 vp run release:dry-run
 ```
 
-It runs the same `release:version` task the workflow does, prints the versions it
-would produce and the files it would touch, then reverts. It refuses to start
-unless your working tree is clean, so it can never revert away your own work —
-and because it undoes itself, there is nothing to accidentally commit.
+It runs the same `release:version` task the workflow does, prints the full diff
+of what the release would produce — including generated files like `CHANGELOG.md`
+— then reverts. It refuses to start unless your working tree is clean, so it can
+never revert away your own work, and because it undoes itself there is nothing to
+accidentally commit.
+
+To inspect the generated files directly rather than reading a diff, keep them:
+
+```bash
+vp run release:dry-run --keep
+```
+
+Nothing then cleans up after you. Undo it with the command it prints:
+
+```bash
+git reset --hard && git clean -fd -- skills .changeset
+```
+
+Reach for those two if a simulation is interrupted before it reverts, or if you
+ran `release:version` directly — it is the real release step and does not revert.
+Both commands discard uncommitted work, so check `git status` first.
 
 Nothing about a release is hand-edited. Skill versions come from changesets and
 the plugin version is bumped by script, so a release needs no commit of yours

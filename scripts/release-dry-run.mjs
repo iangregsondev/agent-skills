@@ -7,13 +7,16 @@
 // Refuses to start unless the working tree is clean. That is the guard rail
 // twice over: the revert cannot destroy uncommitted work, and the simulation
 // cannot be committed by accident, because it reverts itself.
+//
+// Pass --keep to skip the revert and inspect the files directly. It then prints
+// how to clean up, because nothing else will.
 
 import { execFileSync, execSync } from "node:child_process";
 
-const run = (command) => execSync(command, { encoding: "utf8" });
-const show = (command) => execSync(command, { stdio: "inherit" });
+const keep = process.argv.includes("--keep");
+const git = (...args) => execFileSync("git", args, { stdio: "inherit" });
 
-const dirty = run("git status --porcelain").trim();
+const dirty = execSync("git status --porcelain", { encoding: "utf8" }).trim();
 if (dirty) {
   console.error(
     "Working tree is not clean. Commit or stash first — this simulation reverts everything.\n",
@@ -25,18 +28,22 @@ if (dirty) {
 console.log("Simulating the release version step...\n");
 
 try {
-  show("vp run release:version");
+  execSync("vp run release:version", { stdio: "inherit" });
 
-  console.log("\n--- versions after ---");
-  show(
-    "git --no-pager diff -- '**/package.json' .claude-plugin/plugin.json | grep -E '^[+-] +\"version\"' || true",
-  );
-
-  console.log("\n--- files touched ---");
-  show("git status --short");
+  // Stage everything so the diff includes generated files such as CHANGELOG.md.
+  // Untracked files are invisible to `git diff` otherwise, and the changelog is
+  // the part most worth reading.
+  git("add", "-A");
+  console.log("\n=== what the release would produce ===\n");
+  git("--no-pager", "diff", "--cached");
 } finally {
-  // The tree was verified clean above, so everything here is the simulation's.
-  execFileSync("git", ["checkout", "--", "."], { stdio: "inherit" });
-  execFileSync("git", ["clean", "-fdq", "--", "skills", ".changeset"], { stdio: "inherit" });
-  console.log("\nReverted. Nothing to commit.");
+  if (keep) {
+    console.log("\nLeft in place (--keep). To clean up:");
+    console.log("  git reset --hard && git clean -fd -- skills .changeset");
+  } else {
+    // The tree was verified clean above, so everything here is the simulation's.
+    git("reset", "--hard", "--quiet");
+    git("clean", "-fdq", "--", "skills", ".changeset");
+    console.log("\nReverted. Nothing to commit.");
+  }
 }
