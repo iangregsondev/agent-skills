@@ -1,0 +1,13 @@
+{
+  "name": "iangregson-skills",
+  "version": "1.0.0",
+  "description": "Ian Gregson's agent skills.",
+  "author": {
+    "name": "Ian Gregson",
+    "email": "hello@iangregson.com"
+  },
+  "repository": "https://github.com/iangregsondev/agent-skills",
+  "license": "MIT",
+  "keywords": ["engineering", "skills", "tdd"],
+  "skills": ["./skills/engineering/tdd"]
+}

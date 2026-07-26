@@ -1,0 +1,17 @@
+{
+  "name": "iangregson",
+  "owner": {
+    "name": "Ian Gregson",
+    "url": "https://github.com/iangregsondev"
+  },
+  "description": "Ian Gregson's agent skills, as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "iangregson-skills",
+      "source": "./",
+      "description": "Ian Gregson's agent skills.",
+      "category": "engineering",
+      "keywords": ["engineering", "skills", "tdd"]
+    }
+  ]
+}

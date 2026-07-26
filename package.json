@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "ready": "vp check && vp test",
+    "ready": "vp check && vp test && vp run validate:plugin",
     "prepare": "vp config"
   },
   "devDependencies": {
+    "@anthropic-ai/claude-code": "catalog:",
     "@changesets/changelog-github": "catalog:",
     "@changesets/cli": "catalog:",
     "vite": "catalog:",

@@ -40,7 +40,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          version: vpx changeset version
+          version: vp run release:version
           publish: vpx changeset tag
           commit: "chore: version skills"
           title: "chore: version skills"

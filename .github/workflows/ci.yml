@@ -32,3 +32,6 @@ jobs:
 
       - name: Test
         run: vp test
+
+      - name: Validate plugin manifests
+        run: vp run validate:plugin

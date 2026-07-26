@@ -48,11 +48,10 @@ Run `vp install` again after pulling changes.
 ## Checks
 
 ```bash
-vp run ready   # format, lint, type check, and validate every skill
+vp run ready   # format, lint, type check, validate every skill and the plugin manifests
 ```
 
-Run it before opening a pull request. Once the repo carries a plugin manifest,
-also run `claude plugin validate . --strict` to check it. If setup or
+Run it before opening a pull request; CI runs the same steps. If setup or
 package-manager behaviour looks wrong, `vp env doctor` reports on it — include
 its output when asking for help.
 
@@ -72,6 +71,16 @@ Three rules specific to this repo:
    its path appears in the `skills` array of `.claude-plugin/plugin.json`. A skill
    absent from that array stays in the repo but never reaches plugin users — which
    is how work-in-progress skills are kept back deliberately.
+
+   **Never hand-edit that manifest's `version`.** Claude Code uses it as the cache
+   key for update detection: if it does not change, `/plugin update` tells users
+   they are already up to date and they never receive the new skill. Because
+   skills version independently, there is no repo-level number for it to mirror —
+   it is a serial number for the bundle, and only has to differ from the last
+   release. So the release workflow bumps its patch automatically, right after
+   `changeset version`, and the bump lands in the same release pull request. There
+   is nothing to remember and no changeset to write for it.
+
 3. **Add a changeset.** Versioning runs on
    [changesets](https://github.com/changesets/changesets):
 
@@ -80,6 +89,11 @@ Three rules specific to this repo:
    ```
 
    Without one, your change ships no version bump.
+
+   Skills version independently, and a **new skill's first changeset is
+   `major`** — from `0.0.0` that yields `1.0.0`, so a skill starts at a release
+   version rather than `0.1.0`. After that, `minor` adds behaviour and `major`
+   is for a change that breaks anyone relying on the old process.
 
 ### Optional: a final editing pass
 
@@ -91,6 +105,45 @@ you type its name rather than waiting for it to fire.
 
 It optimises for predictability, not portability, so re-read your skill for
 leaked tool names afterwards — rule 1 above is the one it won't defend.
+
+## Releases
+
+Merging to `main` starts the release: the workflow runs `vp run release:version`
+— `changeset version` to bump the skills whose changesets are pending, then the
+plugin patch bump — and opens a "chore: version skills" pull request. Merging
+that one applies the versions and tags them.
+
+You can run the whole thing locally first:
+
+```bash
+vp run release:dry-run
+```
+
+It runs the same `release:version` task the workflow does, prints the full diff
+of what the release would produce — including generated files like `CHANGELOG.md`
+— then reverts. It refuses to start unless your working tree is clean, so it can
+never revert away your own work, and because it undoes itself there is nothing to
+accidentally commit.
+
+To inspect the generated files directly rather than reading a diff, keep them:
+
+```bash
+vp run release:dry-run --keep
+```
+
+Nothing then cleans up after you. Undo it with the command it prints:
+
+```bash
+git reset --hard && git clean -fd -- skills .changeset
+```
+
+Reach for those two if a simulation is interrupted before it reverts, or if you
+ran `release:version` directly — it is the real release step and does not revert.
+Both commands discard uncommitted work, so check `git status` first.
+
+Nothing about a release is hand-edited. Skill versions come from changesets and
+the plugin version is bumped by script, so a release needs no commit of yours
+beyond the changeset you already wrote.
 
 ## Pull requests
 
