@@ -25,3 +25,17 @@ predictability, and none of them protect portability.
 A skill ships only if its path appears in the `skills` array of `.claude-plugin/plugin.json`. Leaving it out fails
 silently: the skill stays in the repo and simply never reaches plugin users. It must also get a row in the README
 skills table, or nobody browsing the repo finds it. Both are covered by `tests/skills.test.ts`, so run the tests.
+
+# Versioning
+
+Skills version independently, through changesets, and nothing about a version is ever hand-edited.
+
+- A **new skill starts at `0.0.0`**, and its first changeset is `major` — that yields `1.0.0`, a release version rather
+  than `0.1.0`. Writing `1.0.0` into the new manifest by hand skips a version and is wrong even though nothing fails.
+- Every skill change needs a changeset, keyed by the skill's directory name. Without one the change ships no bump.
+- Never touch the `version` in `.claude-plugin/plugin.json`, a skill's `CHANGELOG.md`, or a released skill version. The
+  release workflow writes all three.
+
+[CONTRIBUTING.md](CONTRIBUTING.md) is the full account of this repo's rules — the manifest-as-cache-key reasoning, the
+unscoped package names, the release and dry-run tasks. Read it before changing anything about how skills are packaged
+or released; this file only carries the parts that are easiest to walk past.

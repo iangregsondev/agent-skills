@@ -1,0 +1,17 @@
+{
+  "name": "changeset",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Write a changeset file directly instead of driving the interactive Changesets CLI.",
+  "keywords": [
+    "changesets",
+    "engineering",
+    "monorepo",
+    "release",
+    "versioning"
+  ],
+  "license": "MIT",
+  "files": [
+    "SKILL.md"
+  ]
+}
