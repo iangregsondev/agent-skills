@@ -15,8 +15,19 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      # The release pull request is authored by this App rather than
+      # github-actions[bot], so its CI runs without a maintainer approving each one.
+      - name: Mint App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.RELEASE_APP_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+
       - name: Checkout Repo
         uses: actions/checkout@v7
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Setup Vite+
         uses: voidzero-dev/setup-vp@v1
@@ -45,4 +56,4 @@ jobs:
           commit: "chore: version skills"
           title: "chore: version skills"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
