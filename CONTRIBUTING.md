@@ -106,6 +106,28 @@ you type its name rather than waiting for it to fire.
 It optimises for predictability, not portability, so re-read your skill for
 leaked tool names afterwards — rule 1 above is the one it won't defend.
 
+## Releases
+
+Merging to `main` starts the release: the workflow runs `vp run release:version`
+— `changeset version` to bump the skills whose changesets are pending, then the
+plugin patch bump — and opens a "chore: version skills" pull request. Merging
+that one applies the versions and tags them.
+
+You can run the whole thing locally first:
+
+```bash
+vp run release:dry-run
+```
+
+It runs the same `release:version` task the workflow does, prints the versions it
+would produce and the files it would touch, then reverts. It refuses to start
+unless your working tree is clean, so it can never revert away your own work —
+and because it undoes itself, there is nothing to accidentally commit.
+
+Nothing about a release is hand-edited. Skill versions come from changesets and
+the plugin version is bumped by script, so a release needs no commit of yours
+beyond the changeset you already wrote.
+
 ## Pull requests
 
 Branch off `main` and target `main`. Branch names follow
