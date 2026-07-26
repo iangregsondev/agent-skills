@@ -158,6 +158,24 @@ must pass.
 Keep a PR to one skill or one coherent change. A PR adding three unrelated skills
 is three PRs.
 
+### Keeping a branch current
+
+A PR must be up to date with `main` before it can merge, so that CI has run against
+the code that will actually land — a branch and `main` can each be green and still
+break together, and only testing the combination catches it.
+
+**Rebase onto `main` rather than merging it in**, so the branch stays a clean line of
+your own commits:
+
+```bash
+git fetch origin && git rebase origin/main
+git push --force-with-lease
+```
+
+GitHub's "Update branch" button writes a merge commit by default; its "Update with
+rebase" option does the same as the above. Use `--force-with-lease` rather than
+`--force` — it refuses if someone else has pushed to your branch in the meantime.
+
 ## Commit messages
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org/):
