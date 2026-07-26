@@ -88,6 +88,18 @@ Three rules specific to this repo:
    absent from that array stays in the repo but never reaches plugin users — which
    is how work-in-progress skills are kept back deliberately.
 
+   Give it a row in the README skills table too, or nobody browsing the repo learns
+   it exists. Both are checked by `tests/skills.test.ts`, because both fail silently:
+   the repo stays green either way.
+
+   `.claude-plugin/marketplace.json` is a third file describing the same plugin, and
+   its entry may restate any field from `plugin.json` — `keywords`, `description`,
+   even `skills`. Nothing reconciles the copies at install time. **Prefer omitting a
+   field there and letting `plugin.json` be the single source**; a duplicated `skills`
+   array is the dangerous one, since this marketplace's root `source: "./"` makes the
+   entry's list the complete set, so anything it forgets stops shipping. Whatever the
+   entry does duplicate, the tests assert it matches.
+
    **Never hand-edit that manifest's `version`.** Claude Code uses it as the cache
    key for update detection: if it does not change, `/plugin update` tells users
    they are already up to date and they never receive the new skill. Because

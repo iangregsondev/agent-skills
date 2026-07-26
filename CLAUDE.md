@@ -26,6 +26,11 @@ A skill ships only if its path appears in the `skills` array of `.claude-plugin/
 silently: the skill stays in the repo and simply never reaches plugin users. It must also get a row in the README
 skills table, or nobody browsing the repo finds it. Both are covered by `tests/skills.test.ts`, so run the tests.
 
+`.claude-plugin/marketplace.json` describes the same plugin a second time and may restate any field `plugin.json`
+already carries. Leave those fields out of it and let `plugin.json` be the single source — the tests only check the
+copies that exist, so the copy you never made is the one that can never drift. See ["Adding a
+skill"](CONTRIBUTING.md#adding-a-skill) for why a stale `skills` array there stops shipping skills outright.
+
 # Versioning
 
 Skills version independently, through changesets, and nothing about a version is ever hand-edited.
