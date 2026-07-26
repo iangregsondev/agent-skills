@@ -121,6 +121,12 @@ describe.each(skills.map((p) => [relative(ROOT, p), p]))("%s", (rel, path) => {
     expect(pkg.name).toBe(dirName);
   });
 
+  it("is listed in the README skills table", () => {
+    // Also silent: the skill ships, but nobody browsing the repo ever learns it exists.
+    const readme = readFileSync(join(ROOT, "README.md"), "utf8");
+    expect(readme).toContain(`[\`${dirName}\`](${relative(ROOT, path)})`);
+  });
+
   it("is registered in .claude-plugin/plugin.json", () => {
     // Omission fails silently at runtime: the skill never reaches plugin users.
     expect(promoted ?? []).toContain(`./${relative(ROOT, path)}`);

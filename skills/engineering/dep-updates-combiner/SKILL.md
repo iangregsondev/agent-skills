@@ -96,7 +96,7 @@ conflicts the bots already resolved. If `$BRANCH_NAME` exists, append a counter 
 ## Step 6 — Merge each selected PR
 
 Merge in ascending PR number order — oldest first. Bots rebase continuously, so a newer PR often
-already contains an older one's change; oldest-first minimises conflicts.
+already contains an older one's change; oldest-first minimizes conflicts.
 
 ```bash
 git merge --no-ff "origin/<headRefName>" \

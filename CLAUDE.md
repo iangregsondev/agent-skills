@@ -19,8 +19,9 @@ Docs are local at `node_modules/vite-plus/docs` or online at https://viteplus.de
 
 Skills live at `skills/<bucket>/<name>/SKILL.md` and are published for other people's projects, so they name no
 language, test runner, package manager, or directory layout. State the discipline; defer every tool decision to the
-consuming project. This holds even when a rewriting or linting pass suggests otherwise — those optimise for
+consuming project. This holds even when a rewriting or linting pass suggests otherwise — those optimize for
 predictability, and none of them protect portability.
 
 A skill ships only if its path appears in the `skills` array of `.claude-plugin/plugin.json`. Leaving it out fails
-silently: the skill stays in the repo and simply never reaches plugin users.
+silently: the skill stays in the repo and simply never reaches plugin users. It must also get a row in the README
+skills table, or nobody browsing the repo finds it. Both are covered by `tests/skills.test.ts`, so run the tests.
