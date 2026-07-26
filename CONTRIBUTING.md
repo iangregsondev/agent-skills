@@ -52,7 +52,7 @@ vp run ready   # format, lint, type check, validate every skill and the plugin m
 ```
 
 Run it before opening a pull request; CI runs the same steps. If setup or
-package-manager behaviour looks wrong, `vp env doctor` reports on it — include
+package-manager behavior looks wrong, `vp env doctor` reports on it — include
 its output when asking for help.
 
 ## Adding a skill
@@ -92,7 +92,7 @@ Three rules specific to this repo:
 
    Skills version independently, and a **new skill's first changeset is
    `major`** — from `0.0.0` that yields `1.0.0`, so a skill starts at a release
-   version rather than `0.1.0`. After that, `minor` adds behaviour and `major`
+   version rather than `0.1.0`. After that, `minor` adds behavior and `major`
    is for a change that breaks anyone relying on the old process.
 
 ### Optional: a final editing pass
@@ -103,7 +103,7 @@ triggers, collapses duplicated and no-op lines, and pushes each step towards a
 checkable finish condition. Install it however you prefer; it's user-invoked, so
 you type its name rather than waiting for it to fire.
 
-It optimises for predictability, not portability, so re-read your skill for
+It optimizes for predictability, not portability, so re-read your skill for
 leaked tool names afterwards — rule 1 above is the one it won't defend.
 
 ## Releases
