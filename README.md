@@ -15,6 +15,7 @@ install them into, under Claude Code or any other Agent-Skills-standard harness.
 
 | Skill                                                             | Bucket      | What it does                                                                           |
 | ----------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| [`agent-config-audit`](skills/engineering/agent-config-audit)     | engineering | Sweeps a repo's agent config for pointers, commands and facts that stopped being true. |
 | [`changeset`](skills/engineering/changeset)                       | engineering | Writes a changeset file directly, since the interactive prompts an agent can't answer. |
 | [`dep-updates-combiner`](skills/engineering/dep-updates-combiner) | engineering | Collapses many open dependency-update PRs into one branch and PR, so CI runs once.     |
 | [`tdd`](skills/engineering/tdd)                                   | engineering | Test-driven development gated on user approval of the failing test.                    |

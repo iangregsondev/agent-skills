@@ -8,8 +8,18 @@
   },
   "repository": "https://github.com/iangregsondev/agent-skills",
   "license": "MIT",
-  "keywords": ["changesets", "dependencies", "engineering", "learning", "skills", "tdd"],
+  "keywords": [
+    "agents",
+    "audit",
+    "changesets",
+    "dependencies",
+    "engineering",
+    "learning",
+    "skills",
+    "tdd"
+  ],
   "skills": [
+    "./skills/engineering/agent-config-audit",
     "./skills/engineering/changeset",
     "./skills/engineering/dep-updates-combiner",
     "./skills/engineering/tdd",
