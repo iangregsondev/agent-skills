@@ -251,6 +251,8 @@ importers:
 
   skills/learning/mentor: {}
 
+  skills/writing/us-english-spelling-sweep: {}
+
 packages:
 
   '@anthropic-ai/claude-code-darwin-arm64@2.1.220':

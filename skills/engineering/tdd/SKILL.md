@@ -27,7 +27,7 @@ reading the tests that already exist. Projects vary: some split all three, some 
 only isolate end-to-end, some make no distinction at all. Adopt whatever is there.
 
 The one rule that holds regardless: **every test belongs in a lane that provides the infrastructure it needs.** A test
-requiring a database belongs in a lane that starts one. That is what keeps CI honest — not how the file is labelled.
+requiring a database belongs in a lane that starts one. That is what keeps CI honest — not how the file is labeled.
 
 If the behavior could reasonably be tested at more than one level, that is a design decision, not a lookup. Raise it at
 the gate in step 5.

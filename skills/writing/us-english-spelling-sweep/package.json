@@ -1,0 +1,17 @@
+{
+  "name": "us-english-spelling-sweep",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Sweep a repository to US English, reporting every finding before it changes anything.",
+  "keywords": [
+    "english",
+    "grammar",
+    "localization",
+    "spelling",
+    "writing"
+  ],
+  "license": "MIT",
+  "files": [
+    "SKILL.md"
+  ]
+}

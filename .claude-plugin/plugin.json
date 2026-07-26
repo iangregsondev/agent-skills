@@ -16,13 +16,16 @@
     "engineering",
     "learning",
     "skills",
-    "tdd"
+    "spelling",
+    "tdd",
+    "writing"
   ],
   "skills": [
     "./skills/engineering/agent-config-audit",
     "./skills/engineering/changeset",
     "./skills/engineering/dep-updates-combiner",
     "./skills/engineering/tdd",
-    "./skills/learning/mentor"
+    "./skills/learning/mentor",
+    "./skills/writing/us-english-spelling-sweep"
   ]
 }
