@@ -245,6 +245,8 @@ importers:
 
   skills/engineering/tdd: {}
 
+  skills/learning/mentor: {}
+
 packages:
 
   '@anthropic-ai/claude-code-darwin-arm64@2.1.220':
