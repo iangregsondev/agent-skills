@@ -48,11 +48,10 @@ Run `vp install` again after pulling changes.
 ## Checks
 
 ```bash
-vp run ready   # format, lint, type check, and validate every skill
+vp run ready   # format, lint, type check, validate every skill and the plugin manifests
 ```
 
-Run it before opening a pull request. Once the repo carries a plugin manifest,
-also run `claude plugin validate . --strict` to check it. If setup or
+Run it before opening a pull request; CI runs the same steps. If setup or
 package-manager behaviour looks wrong, `vp env doctor` reports on it — include
 its output when asking for help.
 
@@ -72,6 +71,15 @@ Three rules specific to this repo:
    its path appears in the `skills` array of `.claude-plugin/plugin.json`. A skill
    absent from that array stays in the repo but never reaches plugin users — which
    is how work-in-progress skills are kept back deliberately.
+
+   **Do not add a `version` field to that manifest.** Claude Code uses the plugin
+   `version` as the cache key for update detection: set it, and users receive
+   changes only when you bump the string — new commits alone do nothing, and
+   `/plugin update` tells them they are already up to date. Omitted, it falls back
+   to the git commit SHA, so every merge to `main` is an update. Since skills here
+   version independently, there is no single repo-level number for a plugin
+   `version` to track, and an invented one would only rot. Leave it out.
+
 3. **Add a changeset.** Versioning runs on
    [changesets](https://github.com/changesets/changesets):
 
@@ -80,6 +88,11 @@ Three rules specific to this repo:
    ```
 
    Without one, your change ships no version bump.
+
+   Skills version independently, and a **new skill's first changeset is
+   `major`** — from `0.0.0` that yields `1.0.0`, so a skill starts at a release
+   version rather than `0.1.0`. After that, `minor` adds behaviour and `major`
+   is for a change that breaks anyone relying on the old process.
 
 ### Optional: a final editing pass
 

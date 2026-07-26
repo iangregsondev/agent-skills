@@ -11,11 +11,40 @@ one task well — the discipline, not the toolchain. Skills name no language, te
 runner, package manager, or directory layout, so they work in whatever project you
 install them into, under Claude Code or any other Agent-Skills-standard harness.
 
-## Status
+## Skills
 
-**No skills published yet.** This repository currently holds the structure,
-tooling and checks that skills will land into; each skill arrives in its own pull
-request. Until the first one does, there is nothing to install.
+| Skill                           | Bucket      | What it does                                                        |
+| ------------------------------- | ----------- | ------------------------------------------------------------------- |
+| [`tdd`](skills/engineering/tdd) | engineering | Test-driven development gated on user approval of the failing test. |
+
+## Installation
+
+Two routes, reading the same files.
+
+**As loose skills**, via [skills.sh](https://skills.sh) — copies editable skill
+files into your project, unnamespaced:
+
+```bash
+npx skills add iangregsondev/agent-skills            # all of them
+npx skills add iangregsondev/agent-skills --skill tdd # just one
+```
+
+**As a Claude Code plugin** — read-only, always current, and namespaced so it
+can't collide with a skill of the same name elsewhere:
+
+```
+/plugin marketplace add iangregsondev/agent-skills
+/plugin install iangregson-skills
+```
+
+## Invoking a skill
+
+Skills fire two ways: automatically, when what you ask matches the skill's
+`description`; or by name, typed as a slash command. Installed as a plugin the
+name is namespaced — `/iangregson-skills:tdd` rather than `/tdd`.
+
+Invocation is a model judgment, not a keyword match. To make a skill fire
+reliably in a given repo, use its vocabulary in that repo's `CLAUDE.md`.
 
 ## Structure
 
@@ -28,7 +57,7 @@ skills/
 ```
 
 Buckets group skills by domain (`engineering/`, `productivity/`, …). Nesting is
-free-form — the workspace glob is `skills/**`, and the plugin manifest will list
+free-form — the workspace glob is `skills/**`, and the plugin manifest lists
 skill paths explicitly, so neither depends on a fixed depth.
 
 `tests/skills.test.ts` validates every skill that exists: frontmatter, that the
