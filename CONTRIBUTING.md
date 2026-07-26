@@ -127,7 +127,7 @@ Three rules specific to this repo:
 
 [`writing-great-skills`](https://github.com/mattpocock/skills) is a good last
 read over a new or edited skill — it sharpens the description into distinct
-triggers, collapses duplicated and no-op lines, and pushes each step towards a
+triggers, collapses duplicated and no-op lines, and pushes each step toward a
 checkable finish condition. Install it however you prefer; it's user-invoked, so
 you type its name rather than waiting for it to fire.
 
