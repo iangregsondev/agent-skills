@@ -72,13 +72,14 @@ Three rules specific to this repo:
    absent from that array stays in the repo but never reaches plugin users — which
    is how work-in-progress skills are kept back deliberately.
 
-   **Do not add a `version` field to that manifest.** Claude Code uses the plugin
-   `version` as the cache key for update detection: set it, and users receive
-   changes only when you bump the string — new commits alone do nothing, and
-   `/plugin update` tells them they are already up to date. Omitted, it falls back
-   to the git commit SHA, so every merge to `main` is an update. Since skills here
-   version independently, there is no single repo-level number for a plugin
-   `version` to track, and an invented one would only rot. Leave it out.
+   **Never hand-edit that manifest's `version`.** Claude Code uses it as the cache
+   key for update detection: if it does not change, `/plugin update` tells users
+   they are already up to date and they never receive the new skill. Because
+   skills version independently, there is no repo-level number for it to mirror —
+   it is a serial number for the bundle, and only has to differ from the last
+   release. So the release workflow bumps its patch automatically, right after
+   `changeset version`, and the bump lands in the same release pull request. There
+   is nothing to remember and no changeset to write for it.
 
 3. **Add a changeset.** Versioning runs on
    [changesets](https://github.com/changesets/changesets):

@@ -12,5 +12,14 @@ export default defineConfig({
   },
   run: {
     cache: true,
+    tasks: {
+      // Uncached: the run takes under a second, and a cache that misses the
+      // manifests replays a stale pass — which is how a broken plugin.json
+      // once got a green light locally and only failed in CI.
+      "validate:plugin": {
+        command: "claude plugin validate . --strict",
+        cache: false,
+      },
+    },
   },
 });
