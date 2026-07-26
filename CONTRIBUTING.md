@@ -61,6 +61,22 @@ Skills live at `skills/<bucket>/<name>/SKILL.md`, with a `package.json` beside
 them making the directory a workspace member. Buckets group by domain
 (`engineering/`, `productivity/`, …); nesting depth is free-form.
 
+### The `package.json` beside a skill
+
+It exists to make the directory a workspace member so changesets can version it.
+Its `name` is the skill's directory name, unscoped, and every skill is
+`"private": true`.
+
+Nothing here is published to a registry. Skills reach people through this repo —
+via skills.sh or the Claude Code plugin — and neither reads `package.json`:
+installing resolves the _directory_, and the slash command comes from the `name`
+in `SKILL.md` frontmatter. The package name therefore drives only three things:
+changeset keys, `CHANGELOG.md` headers, and git tag names (`tdd@1.0.0`).
+
+That is why the names carry no `@scope` — an unscoped name can only collide
+inside a registry these never enter. `tests/skills.test.ts` asserts the name
+matches the directory.
+
 Three rules specific to this repo:
 
 1. **Keep skills tool-agnostic.** A skill names no language, test runner, package
