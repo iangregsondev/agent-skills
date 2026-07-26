@@ -1,6 +1,6 @@
 {
   "name": "mentor",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "description": "The agent writes no code and coaches instead, so the learner types every line themselves.",
   "keywords": [
