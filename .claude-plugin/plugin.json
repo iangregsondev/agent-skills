@@ -8,6 +8,6 @@
   },
   "repository": "https://github.com/iangregsondev/agent-skills",
   "license": "MIT",
-  "keywords": ["engineering", "skills", "tdd"],
-  "skills": ["./skills/engineering/tdd"]
+  "keywords": ["dependencies", "engineering", "skills", "tdd"],
+  "skills": ["./skills/engineering/dep-updates-combiner", "./skills/engineering/tdd"]
 }
