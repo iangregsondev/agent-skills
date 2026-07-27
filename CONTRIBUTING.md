@@ -31,8 +31,9 @@ match, so the exact wording you used matters.
 This repo uses [Vite+](https://viteplus.dev), a single `vp` CLI wrapping the
 runtime, package manager and tooling.
 
-**Use `vp` — not npm, pnpm, yarn or bun.** `npm` and `npx` will refuse to run here
-anyway: `devEngines.packageManager` pins the project to pnpm and npm errors with
+**Use `vp` — not npm, pnpm, yarn or bun — and `vpx` in place of `npx`, `pnpm dlx`,
+`yarn dlx` or `bunx`.** `npm` and `npx` will refuse to run here anyway:
+`devEngines.packageManager` pins the project to pnpm and npm errors with
 `EBADDEVENGINES`.
 
 Requires Node.js >= 22.18.0.
