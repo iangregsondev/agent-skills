@@ -80,10 +80,36 @@ matches the directory.
 
 Three rules specific to this repo:
 
-1. **Keep skills tool-agnostic.** A skill names no language, test runner, package
-   manager or directory layout — it defers every tool decision to the project it
-   gets installed into. State the discipline, not the toolchain. See the
-   "Authoring skills" section of [CLAUDE.md](CLAUDE.md).
+1. **Try to keep skills tool-agnostic.** Aim for a skill that names no language,
+   test runner, package manager or directory layout, deferring every tool
+   decision to the project it gets installed into. State the discipline, not the
+   toolchain. See the "Authoring skills" section of [CLAUDE.md](CLAUDE.md).
+
+   Some skills are genuinely about one stack, and those are welcome. Say what the
+   skill takes for granted and the check makes room for it:
+
+   ```yaml
+   ---
+   name: my-skill
+   description: … for TypeScript projects using Vitest. …
+   metadata:
+     assumes: TypeScript, Vitest
+   ---
+   ```
+
+   `metadata.assumes` is a comma-separated list, and `metadata` is where the
+   [Agent Skills spec](https://agentskills.io/specification) puts fields it doesn't
+   define itself, so nothing outside this repo trips over it.
+
+   Two things follow from listing something there. It stops counting as a leaked
+   tool name in `tests/skills.test.ts` — but only the names you list; anything else
+   still fails. And the `description` has to name it too, because the description is
+   what decides when the skill fires: one that reads as portable while assuming a
+   stack will fire in projects it can't help.
+
+   Reach for the version that assumes nothing where one exists. The list is for
+   skills that would be worse written portably, not a way around the check.
+
 2. **Register it to ship it.** A skill is published as part of the plugin only if
    its path appears in the `skills` array of `.claude-plugin/plugin.json`. A skill
    absent from that array stays in the repo but never reaches plugin users — which
@@ -129,8 +155,9 @@ Three rules specific to this repo:
 [`writing-great-skills`](https://github.com/mattpocock/skills) is a good last
 read over a new or edited skill — it sharpens the description into distinct
 triggers, collapses duplicated and no-op lines, and pushes each step toward a
-checkable finish condition. Install it however you prefer; it's user-invoked, so
-you type its name rather than waiting for it to fire.
+checkable finish condition. It is listed in
+[EXTERNAL-SKILLS.md](EXTERNAL-SKILLS.md) with its install route and scope; it's
+user-invoked, so you type its name rather than waiting for it to fire.
 
 It optimizes for predictability, not portability, so re-read your skill for
 leaked tool names afterwards — rule 1 above is the one it won't defend.
