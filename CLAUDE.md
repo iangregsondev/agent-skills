@@ -15,6 +15,29 @@ Docs are local at `node_modules/vite-plus/docs` or online at https://viteplus.de
 
 <!--VITE PLUS END-->
 
+# Toolchain
+
+`vp` and `vpx` replace the whole npm/pnpm/yarn/bun surface, one-off package runners included. Translate before
+running anything:
+
+| Instead of                                             | Use                       |
+| ------------------------------------------------------ | ------------------------- |
+| `npm install`, `pnpm install`, `yarn`, `bun install`   | `vp install`              |
+| `npm install <pkg>`, `pnpm add`, `yarn add`, `bun add` | `vp add <pkg>`            |
+| `npm run <task>`, `pnpm run`, `yarn <task>`, `bun run` | `vp run <task>`           |
+| `npx <pkg>`, `pnpm dlx`, `yarn dlx`, `bunx`            | `vpx <pkg>` (= `vp dlx`)  |
+| `npm exec`, `pnpm exec`, `yarn exec`                   | `vpx <bin>` (= `vp exec`) |
+
+`vpx` resolves a local binary first and downloads only if it is missing, so it covers both of the last two rows.
+
+Reaching past them fails in different ways, which is why the rule is "always translate" rather than "watch for errors":
+`devEngines.packageManager` pins this repo to pnpm, so npm and npx abort outright with `EBADDEVENGINES`, while yarn and
+bun would ignore `pnpm-workspace.yaml` and `pnpm-lock.yaml` and quietly resolve a different dependency tree.
+
+The `npx` in the README install snippets is what consumers type in their own projects — leave it alone.
+
+Everything above the `VITE PLUS END` marker is generated. Edits there are overwritten; put repo-specific rules here.
+
 # Authoring skills
 
 Skills live at `skills/<bucket>/<name>/SKILL.md` and are published for other people's projects, so they name no
