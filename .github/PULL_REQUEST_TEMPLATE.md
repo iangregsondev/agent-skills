@@ -22,7 +22,9 @@
 For a new or changed skill:
 
 - [ ] The skill names no language, test runner, package manager, or directory
-      layout — it defers tool decisions to the consuming project
+      layout — it defers tool decisions to the consuming project. If it genuinely
+      needs one, `metadata.assumes` lists it, the `description` names it too, and
+      the PR says why the portable version would be worse
 - [ ] Its path is listed in the `skills` array of `.claude-plugin/plugin.json`
       (or is deliberately held back)
 - [ ] The `description` lists one trigger per branch, with no synonym padding

@@ -1,15 +1,18 @@
-# agent-skills
+# Ian Gregson's agent skills
 
 [![skills.sh](https://skills.sh/b/iangregsondev/agent-skills)](https://skills.sh/iangregsondev/agent-skills)
 [![CI](https://github.com/iangregsondev/agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/iangregsondev/agent-skills/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 
-> Reusable agent skills for AI coding agents.
+> Skills for AI coding agents — one task each, kept portable across projects,
+> languages and harnesses wherever the task allows.
 
 Each skill is a self-contained `SKILL.md` folder that teaches an agent to handle
-one task well — the discipline, not the toolchain. Skills name no language, test
-runner, package manager, or directory layout, so they work in whatever project you
-install them into, under Claude Code or any other Agent-Skills-standard harness.
+one task well — the discipline, not the toolchain. The default is to name no
+language, test runner, package manager or directory layout, so a skill works in
+whatever project you install it into, under Claude Code or any other
+Agent-Skills-standard harness. Where a skill genuinely can't be written that way,
+its description says what it's tied to rather than hiding it.
 
 ## Skills
 
@@ -21,6 +24,17 @@ install them into, under Claude Code or any other Agent-Skills-standard harness.
 | [`tdd`](skills/engineering/tdd)                                         | engineering | Test-driven development gated on user approval of the failing test.                    |
 | [`mentor`](skills/learning/mentor)                                      | learning    | The agent writes no code and coaches instead, so you type every line yourself.         |
 | [`us-english-spelling-sweep`](skills/writing/us-english-spelling-sweep) | writing     | Converts a repo to US English, reporting every finding before it changes anything.     |
+
+## Third-party skills
+
+**[EXTERNAL-SKILLS.md](EXTERNAL-SKILLS.md) — a curated list of third-party skills
+worth running alongside these.** It records how each one installs and whether to
+install it globally or per project, and points at the source for everything else.
+
+Nothing on that list is written, maintained, reviewed or endorsed by this repo,
+and none of it is vendored here. Support and security reports go to the author,
+on their own repo. The portability default above applies to the skills in this
+repo only — external ones are frequently built around one language or framework.
 
 ## Installation
 
@@ -67,7 +81,9 @@ skill paths explicitly, so neither depends on a fixed depth.
 
 `tests/skills.test.ts` validates every skill that exists: frontmatter, that the
 name matches its directory, that it is registered for publication, and that no
-language, runner or package manager leaks into its prose.
+language, runner or package manager has leaked into its prose beyond what the
+skill lists under `metadata.assumes` — a list every skill here is currently empty
+of.
 
 ## Development
 
@@ -90,8 +106,9 @@ vpx changeset
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). In short: skills stay tool-agnostic, every
-skill needs registering for publication, and changes need a changeset.
+See [CONTRIBUTING.md](CONTRIBUTING.md). In short: skills aim to stay
+tool-agnostic, every skill needs registering for publication, and changes need a
+changeset.
 
 ## Security
 

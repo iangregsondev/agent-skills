@@ -40,10 +40,17 @@ Everything above the `VITE PLUS END` marker is generated. Edits there are overwr
 
 # Authoring skills
 
-Skills live at `skills/<bucket>/<name>/SKILL.md` and are published for other people's projects, so they name no
-language, test runner, package manager, or directory layout. State the discipline; defer every tool decision to the
-consuming project. This holds even when a rewriting or linting pass suggests otherwise — those optimize for
+Skills live at `skills/<bucket>/<name>/SKILL.md` and are published for other people's projects, so the default is to
+name no language, test runner, package manager, or directory layout. State the discipline; defer every tool decision
+to the consuming project. This holds even when a rewriting or linting pass suggests otherwise — those optimize for
 predictability, and none of them protect portability.
+
+A skill genuinely about one stack is fine. It lists what it takes for granted under `metadata.assumes` in its
+frontmatter — comma-separated, and `metadata` because that is where the Agent Skills spec puts fields it does not
+define. Listed names stop counting as leaks in `tests/skills.test.ts`; unlisted ones still fail, and the `description`
+has to name each one, since the description decides when the skill fires. Prefer the version that assumes nothing
+where one exists — the list is for skills that would be worse written portably, not a shortcut when portable is
+harder to write.
 
 A skill ships only if its path appears in the `skills` array of `.claude-plugin/plugin.json`. Leaving it out fails
 silently: the skill stays in the repo and simply never reaches plugin users. It must also get a row in the README

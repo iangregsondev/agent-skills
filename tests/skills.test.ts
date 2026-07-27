@@ -61,6 +61,15 @@ function frontmatter(skillMd: string): Record<string, string> {
       while (i + 1 < lines.length && /^\s+\S/.test(lines[i + 1])) block.push(lines[++i].trim());
       value = block.join(" ");
     }
+    // A nested mapping — `metadata:` is the spec's home for fields it doesn't define.
+    // Flattened one level, so `metadata.assumes` reads like any other field.
+    if (value === "") {
+      while (i + 1 < lines.length && /^\s+\S/.test(lines[i + 1])) {
+        const child = /^\s+([a-z-]+):\s*(.*)$/.exec(lines[++i]);
+        if (child) fields[`${kv[1]}.${child[1]}`] = child[2].trim();
+      }
+      continue;
+    }
     fields[kv[1]] = value.trim();
   }
   return fields;
@@ -163,8 +172,26 @@ describe.each(skills.map((p) => [relative(ROOT, p), p]))("%s", (rel, path) => {
   // Reference files ship with the skill, so they carry the same rule.
   const markdown = [join(path, "SKILL.md"), ...findMarkdown(join(path, "references"))];
 
+  // Tool-agnostic is what we aim for, not something a skill has to be. One genuinely
+  // about a single stack lists what it takes for granted in `metadata.assumes` —
+  // comma-separated. Those names stop counting as leaks; everything else still does.
+  const assumes = (fields["metadata.assumes"] ?? "")
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+  const assumed = new Set(assumes.map((entry) => entry.toLowerCase()));
+
+  it("names in its description whatever it assumes", () => {
+    // The description decides whether the skill fires. One that reads as portable
+    // while assuming a stack is one that fires in projects it cannot help.
+    const unstated = assumes.filter(
+      (entry) => !fields.description.toLowerCase().includes(entry.toLowerCase()),
+    );
+    expect(unstated, `assumed but absent from the description: ${unstated.join(", ")}`).toEqual([]);
+  });
+
   it.each(markdown.map((f) => [relative(path, f), f]))(
-    "%s names no language, runner, or package manager",
+    "%s names no language, runner, or package manager it has not declared",
     (_label, file) => {
       const text = readFileSync(file, "utf8");
       const body = text.startsWith("---") ? text.slice(text.indexOf("\n---", 3) + 4) : text;
@@ -172,8 +199,10 @@ describe.each(skills.map((p) => [relative(ROOT, p), p]))("%s", (rel, path) => {
         .split("\n")
         .filter((line) => !line.trim().startsWith("```"))
         .join("\n");
-      const leaked = FORBIDDEN.filter((tool) =>
-        new RegExp(`(^|[^\\w/.-])${tool.replace(".", "\\.")}([^\\w-]|$)`, "i").test(prose),
+      const leaked = FORBIDDEN.filter(
+        (tool) =>
+          !assumed.has(tool) &&
+          new RegExp(`(^|[^\\w/.-])${tool.replace(".", "\\.")}([^\\w-]|$)`, "i").test(prose),
       );
       expect(leaked, `leaked tool names: ${leaked.join(", ")}`).toEqual([]);
     },
