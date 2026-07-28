@@ -16,40 +16,20 @@ its description says what it's tied to rather than hiding it.
 
 ## Skills
 
-| Skill                                                                   | Bucket      | What it does                                                                           | Recommended scope                        |
-| ----------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- | ---------------------------------------- |
-| [`agent-config-audit`](skills/engineering/agent-config-audit)           | engineering | Sweeps a repo's agent config for pointers, commands and facts that stopped being true. | Global                                   |
-| [`changeset`](skills/engineering/changeset)                             | engineering | Writes a changeset file directly, since the interactive prompts an agent can't answer. | Project — wants a changesets-set-up repo |
-| [`dep-updates-combiner`](skills/engineering/dep-updates-combiner)       | engineering | Collapses many open dependency-update PRs into one branch and PR, so CI runs once.     | Global                                   |
-| [`tdd`](skills/engineering/tdd)                                         | engineering | Test-driven development gated on user approval of the failing test.                    | Global                                   |
-| [`mentor`](skills/learning/mentor)                                      | learning    | The agent writes no code and coaches instead, so you type every line yourself.         | Global                                   |
-| [`us-english-spelling-sweep`](skills/writing/us-english-spelling-sweep) | writing     | Converts a repo to US English, reporting every finding before it changes anything.     | Global                                   |
-
-## Recommended scope
-
-A skill installed **globally** is available in every repo you open. Installed
-**per project** it exists only where you put it — and only the loose-skill route
-supports that; a plugin install is always global.
-
-**Global is the default**, and the table says only "Global" because there is
-nothing to explain. A skill earns **Project** when installing it everywhere would
-cost you something, which in practice means one of:
-
-- it fires without being asked, so it will interject in repos it knows nothing
-  about;
-- it expects particular files or layout to exist, and stops to complain when they
-  don't;
-- it encodes one stack's conventions, which are wrong advice outside that stack.
-
-All of these are Global except [`changeset`](skills/engineering/changeset), which
-expects a repo already set up for changesets and has nothing to do in one that
-isn't.
+| Skill                                                                   | Bucket      | What it does                                                                           |
+| ----------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| [`agent-config-audit`](skills/engineering/agent-config-audit)           | engineering | Sweeps a repo's agent config for pointers, commands and facts that stopped being true. |
+| [`changeset`](skills/engineering/changeset)                             | engineering | Writes a changeset file directly, since the interactive prompts an agent can't answer. |
+| [`dep-updates-combiner`](skills/engineering/dep-updates-combiner)       | engineering | Collapses many open dependency-update PRs into one branch and PR, so CI runs once.     |
+| [`tdd`](skills/engineering/tdd)                                         | engineering | Test-driven development gated on user approval of the failing test.                    |
+| [`mentor`](skills/learning/mentor)                                      | learning    | The agent writes no code and coaches instead, so you type every line yourself.         |
+| [`us-english-spelling-sweep`](skills/writing/us-english-spelling-sweep) | writing     | Converts a repo to US English, reporting every finding before it changes anything.     |
 
 ## Third-party skills
 
 **[EXTERNAL-SKILLS.md](EXTERNAL-SKILLS.md) — a curated list of third-party skills
-worth running alongside these.** It records how each one installs and whether to
-install it globally or per project, and points at the source for everything else.
+worth running alongside these.** It records how each one installs, and points at
+the source for everything else.
 
 Nothing on that list is written, maintained, reviewed or endorsed by this repo,
 and none of it is vendored here. Support and security reports go to the author,

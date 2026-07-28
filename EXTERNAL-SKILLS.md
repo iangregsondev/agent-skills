@@ -1,8 +1,8 @@
 # External skills
 
 Third-party skills worth using alongside this repo. Nothing here is vendored,
-forked or reproduced under `skills/` — the value is the install route and the
-scope call, and copying the files would only buy a maintenance burden.
+forked or reproduced under `skills/` — the value is the install route, and
+copying the files would only buy a maintenance burden.
 
 > [!IMPORTANT]
 > **We did not write these skills, and we do not own, maintain, review or support
@@ -11,13 +11,12 @@ scope call, and copying the files would only buy a maintenance burden.
 > [What this list is not](#what-this-list-is-not) before installing anything.
 
 Rows are grouped by source repo, not by skill — most repos hold more than we
-list, and listing a repo is never a claim on all of it. A repo gets a second row
-only when two of its skills want different scopes.
+list, and listing a repo is never a claim on all of it.
 
-| Skills                                                                                                                                                                                                                                                                                                        | Source                                                    | Install | Recommended scope                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------- | ------------------------------------- |
-| [`effect-ts`](https://github.com/Effect-TS/skills/tree/main/skills/effect-ts)                                                                                                                                                                                                                                 | [Effect-TS/skills](https://github.com/Effect-TS/skills)   | Skill   | Project — fires unasked, wants a repo |
-| [`code-review`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review), [`wayfinder`](https://github.com/mattpocock/skills/tree/main/skills/engineering/wayfinder), [`writing-great-skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-great-skills) | [mattpocock/skills](https://github.com/mattpocock/skills) | Both    | Global                                |
+| Skills                                                                                                                                                                                                                                                                                                        | Source                                                    | Install |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------- |
+| [`effect-ts`](https://github.com/Effect-TS/skills/tree/main/skills/effect-ts)                                                                                                                                                                                                                                 | [Effect-TS/skills](https://github.com/Effect-TS/skills)   | Skill   |
+| [`code-review`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review), [`wayfinder`](https://github.com/mattpocock/skills/tree/main/skills/engineering/wayfinder), [`writing-great-skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-great-skills) | [mattpocock/skills](https://github.com/mattpocock/skills) | Both    |
 
 ## Install routes
 
@@ -33,20 +32,6 @@ Which route applies is a property of the source repo, not a choice we make:
 For the command, the flags, and anything the author wants done after installing
 — setup steps, required config, prerequisites — go to the source repo. It is the
 only place that is current.
-
-## Recommended scope
-
-Scope works exactly as it does for [our own skills](README.md#recommended-scope):
-**global** is available in every repo, **per project** only where you put it, and
-Global is the default — a skill earns Project only when installing it everywhere
-would cost you something (it fires unasked, expects particular files or layout, or
-encodes one stack's conventions). Both routes above support global; only the
-loose-skill route supports per project.
-
-Two things differ here. It is our reading rather than the author's instruction —
-where an author states a scope, theirs wins. And the reason a row is Project is
-carried inline, in a few words; anything longer belongs in the notes below, and
-most entries need no note at all.
 
 ## Notes
 
