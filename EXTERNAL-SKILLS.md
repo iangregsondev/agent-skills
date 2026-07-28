@@ -36,33 +36,24 @@ only place that is current.
 
 ## Recommended scope
 
-A skill installed **globally** is available in every repo you open. Installed
-**per project** it exists only where you put it. Both routes above support
-global; only the loose-skill route supports per project.
+Scope works exactly as it does for [our own skills](README.md#recommended-scope):
+**global** is available in every repo, **per project** only where you put it, and
+Global is the default — a skill earns Project only when installing it everywhere
+would cost you something (it fires unasked, expects particular files or layout, or
+encodes one stack's conventions). Both routes above support global; only the
+loose-skill route supports per project.
 
-It is a recommendation, not a rule, and it is our reading rather than the
-author's instruction — where an author states a scope, theirs wins.
-
-**Global is the default**, and rows say only "Global" because there is nothing to
-explain. A skill earns **Project** when installing it everywhere would cost you
-something, which in practice means one of:
-
-- it fires without being asked, so it will interject in repos it knows nothing
-  about;
-- it expects particular files or layout to exist, and stops to complain when they
-  don't;
-- it encodes one stack's conventions, which are wrong advice outside that stack.
-
-Those rows carry the reason inline, in a few words. Anything longer belongs in
-the notes below, and most entries need no note at all.
+Two things differ here. It is our reading rather than the author's instruction —
+where an author states a scope, theirs wins. And the reason a row is Project is
+carried inline, in a few words; anything longer belongs in the notes below, and
+most entries need no note at all.
 
 ## Notes
 
 Only where something isn't obvious from the table.
 
 **mattpocock/skills** — the repo carries far more than the three listed; this is
-a subset, not a verdict on the rest. On the loose-skill route watch for name
-collisions: `code-review` and `tdd` also exist in this repo.
+a subset, not a verdict on the rest.
 
 ## What this list is not
 
