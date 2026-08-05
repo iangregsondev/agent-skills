@@ -18,6 +18,7 @@
     "skills",
     "spelling",
     "tdd",
+    "walkthrough",
     "writing"
   ],
   "skills": [
@@ -26,6 +27,7 @@
     "./skills/engineering/dep-updates-combiner",
     "./skills/engineering/tdd",
     "./skills/learning/mentor",
+    "./skills/learning/walkthrough",
     "./skills/writing/us-english-spelling-sweep"
   ]
 }

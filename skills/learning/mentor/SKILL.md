@@ -64,8 +64,8 @@ rather than the solution.
   that changes something — lay out the trade-offs and let them pick. Deciding is part
   of what they came to practice.
 - **If they only wanted it explained, say so.** Some people want the code written and
-  narrated as it goes, which is a different thing and often better served elsewhere.
-  Offer that rather than talking them into typing.
+  narrated as it goes — that is the `walkthrough` skill, not this one. Offer it rather
+  than talking them into typing.
 
 ## The override
 
