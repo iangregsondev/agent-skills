@@ -251,6 +251,8 @@ importers:
 
   skills/learning/mentor: {}
 
+  skills/learning/walkthrough: {}
+
   skills/writing/us-english-spelling-sweep: {}
 
 packages:
