@@ -1,0 +1,17 @@
+{
+  "name": "explain-clearly",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The agent explains in full the first time, so the follow-up asking it to explain again never has to happen.",
+  "keywords": [
+    "clarity",
+    "explanation",
+    "learning",
+    "teaching",
+    "writing"
+  ],
+  "license": "MIT",
+  "files": [
+    "SKILL.md"
+  ]
+}
