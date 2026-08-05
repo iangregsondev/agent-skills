@@ -236,5 +236,10 @@ dist-ssr
 # AI agent worktrees
 .claude/worktrees/
 
+# Local agent instructions and settings — per-developer, never committed
+CLAUDE.local.md
+AGENTS.local.md
+.claude/settings.local.json
+
 # Local staging area for work not yet ready to commit
 .scratch/

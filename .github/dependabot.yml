@@ -18,6 +18,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # Keep at or above `minimumReleaseAge` in pnpm-workspace.yaml (10080
+    # minutes = 7 days). A shorter cooldown lets Dependabot open a PR for a
+    # version pnpm then refuses to install, so CI fails on the bot's own branch.
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore"
@@ -32,6 +37,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # Same week as the npm ecosystem above, so there is one cooldown to reason
+    # about. `default-days` is the only cooldown option github-actions supports.
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     commit-message:
       prefix: "ci"
