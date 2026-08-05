@@ -22,6 +22,7 @@ its description says what it's tied to rather than hiding it.
 | [`changeset`](skills/engineering/changeset)                             | engineering | Writes a changeset file directly, since the interactive prompts an agent can't answer.  |
 | [`dep-updates-combiner`](skills/engineering/dep-updates-combiner)       | engineering | Collapses many open dependency-update PRs into one branch and PR, so CI runs once.      |
 | [`tdd`](skills/engineering/tdd)                                         | engineering | Test-driven development gated on user approval of the failing test.                     |
+| [`explain-clearly`](skills/learning/explain-clearly)                    | learning    | Explains in full the first time — terms defined, steps literal, nothing hand-waved.     |
 | [`mentor`](skills/learning/mentor)                                      | learning    | The agent writes no code and coaches instead, so you type every line yourself.          |
 | [`walkthrough`](skills/learning/walkthrough)                            | learning    | One change at a time, shown and explained, gated on your understanding before the next. |
 | [`us-english-spelling-sweep`](skills/writing/us-english-spelling-sweep) | writing     | Converts a repo to US English, reporting every finding before it changes anything.      |
