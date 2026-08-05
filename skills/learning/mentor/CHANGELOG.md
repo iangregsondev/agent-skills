@@ -1,5 +1,12 @@
 # mentor
 
+## 1.0.1
+
+### Patch Changes
+
+- [`02b0c14`](https://github.com/iangregsondev/agent-skills/commit/02b0c14ff380fcefae79b64d1ffd8eba3eca51d5) Thanks [@iangregsondev](https://github.com/iangregsondev)! - Name `walkthrough` as the place to send someone who wants the code written and narrated as it goes, instead of
+  gesturing at somewhere that did not exist.
+
 ## 1.0.0
 
 ### Major Changes
