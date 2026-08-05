@@ -1,6 +1,12 @@
 packages:
   - skills/**
 
+# Don't install a version until it has been on the registry a week, so a
+# compromised release has time to be yanked before it reaches a lockfile.
+# Value is in minutes; pnpm 11 defaults to 1440 (one day).
+# Mirrored by `cooldown` in .github/dependabot.yml — keep the two in step.
+minimumReleaseAge: 10080
+
 catalogMode: prefer
 
 catalog:
