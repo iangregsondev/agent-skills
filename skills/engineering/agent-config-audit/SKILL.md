@@ -2,10 +2,8 @@
 name: agent-config-audit
 description: >
   Audit a repository's agent configuration for rot — pointers to things that moved, commands that no longer run, facts
-  that stopped being true, wiring nothing ever registered. Use when the user asks to audit the agent config, CLAUDE.md
-  or AGENTS.md; after restructuring the config layer; or when an agent has just followed an instruction that turned out
-  to be wrong. Reads the instruction layer alone — the files an agent consults before it acts. Reports its findings and
-  waits for approval before changing anything.
+  that stopped being true, wiring nothing ever registered. Reads the instruction layer alone — the files an agent
+  consults before it acts — and reports its findings before changing anything.
 disable-model-invocation: true
 ---
 

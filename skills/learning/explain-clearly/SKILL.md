@@ -1,9 +1,8 @@
 ---
 name: explain-clearly
 description: >
-  Explain so it lands the first time, in a register the user can act on without coming back to ask again. Use when
-  they ask for "explain mode" or to "explain clearly", when their own configuration turns it on, and when they turn
-  it off again. Covers explanations, designs and debugging reasoning, not one-line lookups.
+  Explain so it lands the first time, in a register the user can act on without coming back to ask again. Covers
+  explanations, designs and debugging reasoning, not one-line lookups.
 disable-model-invocation: true
 ---
 
@@ -123,13 +122,18 @@ people get stuck on and ask about that part.
 
 ## Before you send
 
-Five questions, every answer, and answering them costs less than the round trip they prevent:
+Six questions, every answer, and answering them costs less than the round trip they prevent:
 
 1. Any term used before it was defined?
 2. Any hand-waving verb still standing in for a step?
 3. Any step with no stated purpose?
 4. Any sentence carrying more than one instruction, or any thing named two different ways?
-5. Could they act on this without asking a follow-up?
+5. Any abstraction with no instance under it, or any gap crossed without being named?
+6. Could they act on this without asking a follow-up?
+
+Six is the ceiling, not one question per rule. Shape first, the project's own words, depth on offer and the pointed
+check have no question of their own — question 6 is what catches them, which is why it gets answered as a real check
+rather than read as a closing formality.
 
 Fix what they catch now, not after being asked again.
 

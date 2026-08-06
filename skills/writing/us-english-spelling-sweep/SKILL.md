@@ -2,9 +2,7 @@
 name: us-english-spelling-sweep
 description: >
   Sweep a repository to US English, sized by blast radius — every finding reported before anything changes, and
-  identifier renames and string edits confirmed one at a time. Use when the user asks to check spelling or grammar
-  across a repo, wants a consistent pass after spotting a single UK spelling, or is settling a project's language
-  before a release or handoff.
+  identifier renames and string edits confirmed one at a time.
 disable-model-invocation: true
 ---
 

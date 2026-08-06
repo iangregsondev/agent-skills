@@ -113,7 +113,7 @@ branch in this repo to merge; report it and skip that PR.
 2. **Stop here** — keep what's merged and open the PR with only those
 3. **Resolve manually** — pause, let the user fix it, then `git add` + `git merge --continue`
 
-Done when every selected PR is merged, skipped by the user, or reported as fork-based.
+Settled when every selected PR is merged, skipped by the user, or reported as fork-based.
 
 ## Step 7 — Verify the lockfile
 
@@ -136,7 +136,7 @@ CI workflow runs. Three outcomes:
    conflicting PRs, bump a further package to satisfy the range, or accept it where the manager
    treats it as a warning rather than an error. Don't silently fix it.
 
-Done when the strict command comes back clean, or the user has chosen how to handle a hard failure.
+Settled when the strict command comes back clean, or the user has chosen how to handle a hard failure.
 
 ## Step 8 — Push the branch
 
@@ -191,5 +191,5 @@ gh pr close <number> \
   --comment "Superseded by <new-pr-url> (combined dependency-updates PR)"
 ```
 
-Done when every combined PR is closed or explicitly left open. Then raise the durable fix from the
+Settled when every combined PR is closed or explicitly left open. Then raise the durable fix from the
 top of this skill — bot-side grouping, so the pile doesn't rebuild.

@@ -1,12 +1,8 @@
 ---
 name: mentor
 description: >-
-  Mentor — coach while the user writes every line themselves, so they learn by doing
-  instead of receiving a finished diff. Use when someone asks for "mentor mode" or
-  "learning mode", tells you not to do the work for them ("teach me, don't do it for
-  me", "let me drive", "guide me, don't take over", "don't write it, help me write
-  it"), or is learning a language or framework and wants to type it themselves. Not
-  for someone who wants the code explained while you still write it.
+  Coach while the user writes every line themselves — the agent writes no code, so they
+  learn by doing instead of receiving a finished diff.
 disable-model-invocation: true
 ---
 
@@ -65,8 +61,8 @@ rather than the solution.
   that changes something — lay out the trade-offs and let them pick. Deciding is part
   of what they came to practice.
 - **If they only wanted it explained, say so.** Some people want the code written and
-  narrated as it goes — that is the `walkthrough` skill, not this one. Offer it rather
-  than talking them into typing.
+  narrated as it goes — that is the `walkthrough` skill, not this one. Name it and let
+  them start it themselves, rather than talking them into typing.
 
 ## The override
 

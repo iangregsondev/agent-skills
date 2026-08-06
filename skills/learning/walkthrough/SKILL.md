@@ -1,11 +1,8 @@
 ---
 name: walkthrough
 description: >
-  Walk the user through the work one change at a time — the real lines shown and the reasoning explained, then a stop
-  for their understanding before the next change. Use when asked to "walk me through it", "explain as you go", or
-  "check with me before moving on"; when someone is learning a codebase and wants to follow every edit as it happens;
-  and to turn it off again. Not for someone who wants to type the code themselves, and not for approving a whole plan
-  up front.
+  Make one change at a time — the real lines shown and the reasoning explained — then stop for the user's understanding
+  before the next change.
 disable-model-invocation: true
 ---
 
