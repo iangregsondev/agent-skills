@@ -51,10 +51,11 @@ body:
   - type: textarea
     id: triggers
     attributes:
-      label: When should it fire?
+      label: How should it be invoked?
       description: >
-        The situations that should trigger it. Distinct situations, not synonyms
-        for the same one.
+        If the agent should reach for it, the distinct situations that trigger
+        it — not synonyms for the same one. If only a person should start it by
+        name, say so and say why a misfire would cost more than the catch.
     validations:
       required: false
 

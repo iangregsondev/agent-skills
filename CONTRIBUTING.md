@@ -78,7 +78,7 @@ That is why the names carry no `@scope` — an unscoped name can only collide
 inside a registry these never enter. `tests/skills.test.ts` asserts the name
 matches the directory.
 
-Three rules specific to this repo:
+Four rules specific to this repo:
 
 1. **Try to keep skills tool-agnostic.** Aim for a skill that names no language,
    test runner, package manager or directory layout, deferring every tool
@@ -104,13 +104,44 @@ Three rules specific to this repo:
    Two things follow from listing something there. It stops counting as a leaked
    tool name in `tests/skills.test.ts` — but only the names you list; anything else
    still fails. And the `description` has to name it too, because the description is
-   what decides when the skill fires: one that reads as portable while assuming a
-   stack will fire in projects it can't help.
+   what sends anyone to the skill: for a model-invoked one it decides whether the
+   skill fires at all, and for a user-invoked one it is the line a person reads
+   before typing the name. Either way, one that reads as portable while assuming a
+   stack reaches projects it can't help.
 
    Reach for the version that assumes nothing where one exists. The list is for
    skills that would be worse written portably, not a way around the check.
 
-2. **Register it to ship it.** A skill is published as part of the plugin only if
+2. **Choose how it gets invoked.** By default a skill is **model-invoked**: the
+   harness injects its `description` into the agent's context and the agent decides
+   when to reach for it. Adding `disable-model-invocation: true` makes it
+   **user-invoked** — it leaves that list entirely, so neither the agent nor another
+   skill can start it, and only a person typing its name can.
+
+   Model-invocation is the default because the agent noticing the work is usually
+   the whole value: a missing changeset caught without anyone remembering to ask.
+   Turn it off when a misfire costs more than the catch is worth. A skill that
+   changes how the rest of the session runs, or that spends the session on a
+   repo-wide sweep nobody asked for, is one only the user should start.
+
+   The choice decides who the `description` is written for:
+
+   - **Model-invoked** — one trigger per branch, no synonym padding, because that
+     text is what routes the agent to the skill.
+   - **User-invoked** — a one-line summary of what the skill does, trigger list
+     stripped. It routes nothing; it is the line a person reads in the
+     slash-command list.
+
+   Two consequences to expect. A user-invoked skill is invisible to the agent even
+   when it is asked what is installed, so it may report the skill as missing and
+   route around something that is present and working —
+   `.claude-plugin/plugin.json` is the authority on what ships, not the agent's own
+   account of itself. And `disable-model-invocation` is a Claude Code frontmatter
+   field: installed loose via skills.sh, or run under another harness, the skill may
+   still auto-invoke. Other harnesses express this with their own frontmatter or
+   policy files, and this repo carries none of them.
+
+3. **Register it to ship it.** A skill is published as part of the plugin only if
    its path appears in the `skills` array of `.claude-plugin/plugin.json`. A skill
    absent from that array stays in the repo but never reaches plugin users — which
    is how work-in-progress skills are kept back deliberately.
@@ -136,7 +167,7 @@ Three rules specific to this repo:
    `changeset version`, and the bump lands in the same release pull request. There
    is nothing to remember and no changeset to write for it.
 
-3. **Add a changeset.** Versioning runs on
+4. **Add a changeset.** Versioning runs on
    [changesets](https://github.com/changesets/changesets):
 
    ```bash
