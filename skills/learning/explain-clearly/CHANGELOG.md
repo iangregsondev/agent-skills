@@ -39,7 +39,7 @@
   own — which is the exact misfire the flag exists to prevent. The body is what every harness reads, so the constraint
   now lives there too:
 
-  > **The user starts it, never you.** <why a misfire costs more than the catch.> If you reached this file on your own
+  > **The user starts it, never you.** `<why a misfire costs more than the catch.>` If you reached this file on your own
   > judgment, say so and stand down.
 
   Each carries its own reason: coaching someone who asked for a diff costs them the diff, gating changes for someone who

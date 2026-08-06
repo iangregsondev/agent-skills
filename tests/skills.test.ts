@@ -209,4 +209,53 @@ describe.each(skills.map((p) => [relative(ROOT, p), p]))("%s", (rel, path) => {
       expect(leaked, `leaked tool names: ${leaked.join(", ")}`).toEqual([]);
     },
   );
+
+  it.each(markdown.map((f) => [relative(path, f), f]))(
+    "%s wraps angle-bracket placeholders in backticks",
+    (_label, file) => {
+      const swallowed = htmlLikeTags(readFileSync(file, "utf8"));
+      expect(swallowed, `GitHub will delete these: ${swallowed.join(", ")}`).toEqual([]);
+    },
+  );
+});
+
+/**
+ * Anything shaped like an HTML tag, outside code. GitHub renders `<why it matters>`
+ * as an unknown element and its sanitizer drops the whole thing — text that reads
+ * correctly in the repo silently loses a phrase on the rendered page. Backticks are
+ * the fix, so the check is for placeholders left bare rather than for angle brackets.
+ */
+function htmlLikeTags(source: string): string[] {
+  const stripped = source
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/^(?: {4}|\t).*$/gm, "")
+    .replace(/`[^`\n]*`/g, "");
+  const allowed = new Set(["<br>", "<br/>", "<br />"]);
+  const found = stripped.match(/<[A-Za-z!/][^>\n]*>/g) ?? [];
+  return [...new Set(found.filter((tag) => !allowed.has(tag.toLowerCase())))];
+}
+
+/**
+ * Changeset bodies become CHANGELOG.md entries and GitHub release notes, and both are
+ * written once and never revisited — a placeholder swallowed there is only noticed by
+ * someone reading the published page. The file is deleted at release, so a pull request
+ * is the only moment this can fire.
+ */
+describe("changesets", () => {
+  const dir = join(ROOT, ".changeset");
+  let pending: string[];
+  try {
+    pending = readdirSync(dir).filter((f) => f.endsWith(".md") && f !== "README.md");
+  } catch {
+    pending = [];
+  }
+
+  it.each(pending.length ? pending : [null])(
+    "%s wraps angle-bracket placeholders in backticks",
+    (file) => {
+      if (file === null) return;
+      const swallowed = htmlLikeTags(readFileSync(join(dir, file), "utf8"));
+      expect(swallowed, `GitHub will delete these: ${swallowed.join(", ")}`).toEqual([]);
+    },
+  );
 });
