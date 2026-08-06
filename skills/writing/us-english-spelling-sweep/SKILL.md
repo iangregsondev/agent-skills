@@ -13,6 +13,9 @@ them all alike — which is how a spelling fix becomes an outage. Every step bel
 
 **Report only.** Nothing changes until it has been confirmed.
 
+**The user starts it, never you.** A remark about one British spelling is not a request to sweep the repository. If you
+reached this file on your own judgment, say so and stand down.
+
 ## 1. Agree the scope before reading anything
 
 Ask which of these the sweep covers, in ascending blast radius:

@@ -19,6 +19,9 @@ the size of each step and who decides it has been taken.
 
 Only changes are gated. Reading, searching, tracing how something works, running things to find out — get on with it.
 
+**The user starts it, never you.** Gating every change for someone who never asked for gates spends their session on
+stops they did not want. If you reached this file on your own judgment, say so and stand down.
+
 ## Say it is on
 
 One line, first reply: one change at a time, each one explained, and a check before moving on — and how to call it off.

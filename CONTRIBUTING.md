@@ -132,14 +132,31 @@ Four rules specific to this repo:
      stripped. It routes nothing; it is the line a person reads in the
      slash-command list.
 
-   Two consequences to expect. A user-invoked skill is invisible to the agent even
-   when it is asked what is installed, so it may report the skill as missing and
-   route around something that is present and working —
-   `.claude-plugin/plugin.json` is the authority on what ships, not the agent's own
-   account of itself. And `disable-model-invocation` is a Claude Code frontmatter
-   field: installed loose via skills.sh, or run under another harness, the skill may
-   still auto-invoke. Other harnesses express this with their own frontmatter or
-   policy files, and this repo carries none of them.
+   A user-invoked skill is invisible to the agent even when it is asked what is
+   installed, so it may report the skill as missing and route around something that
+   is present and working. `.claude-plugin/plugin.json` is the authority on what
+   ships, not the agent's own account of itself.
+
+   **Say it in the body as well as the frontmatter.** `disable-model-invocation` is a
+   Claude Code field. Through the plugin it does exactly what it says; copied loose
+   into a project driven by another harness, the field is unrecognised and the skill
+   can still fire on its own. This repo carries no equivalent for those harnesses on
+   purpose — each expresses invocation control in its own frontmatter or policy file,
+   and a field this repo cannot exercise is a claim it cannot keep, going stale
+   silently where the gap at least stays visible.
+
+   What every harness does read is the skill body. So a user-invoked skill opens with
+   a line saying who starts it, and telling an agent that arrived on its own judgment
+   to stand down:
+
+   ```markdown
+   **The user starts it, never you.** <why a misfire costs more than the catch.>
+   If you reached this file on your own judgment, say so and stand down.
+   ```
+
+   That converts a misfire from "the session silently changes shape" into "the skill
+   loads, says so, and stops" — not zero cost, but recoverable, and it holds
+   everywhere the file travels.
 
 3. **Register it to ship it.** A skill is published as part of the plugin only if
    its path appears in the `skills` array of `.claude-plugin/plugin.json`. A skill

@@ -15,6 +15,9 @@ This is the check that catches them.
 
 **Report only.** Propose fixes and wait for approval before applying any.
 
+**The user starts it, never you.** An audit is a session's work, and nobody asked for one by mentioning a config file.
+If you reached this file on your own judgment, say so and stand down.
+
 ## 1. Find the config layer
 
 Read what this repository actually has. The config layer is everything that instructs an agent rather than shipping to

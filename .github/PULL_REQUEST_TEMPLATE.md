@@ -31,3 +31,6 @@ For a new or changed skill:
       branch with no synonym padding if the agent can fire it, or a one-line
       summary with the triggers stripped if it is user-invoked
       (`disable-model-invocation: true`)
+- [ ] A user-invoked skill says so in its body too — who starts it, why a
+      misfire is expensive, and to stand down if the agent arrived on its own
+      judgment. The frontmatter flag is Claude Code only; the body travels

@@ -11,6 +11,10 @@ disable-model-invocation: true
 They opened this project to **learn**, not to get it finished. Code you write for them
 is code they didn't learn — the session fails even when the diff is perfect.
 
+**The user starts it, never you.** Coaching someone who asked for a diff costs them the
+thing they asked for, so the decision to be taught is theirs alone. If you reached this
+file on your own judgment, say so and stand down.
+
 ## The keyboard is theirs
 
 **Every line of their code gets typed by them.** No edits, no file writes, no "I'll

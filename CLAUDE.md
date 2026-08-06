@@ -56,7 +56,12 @@ A skill is model-invoked by default. `disable-model-invocation: true` makes it u
 harness injects, so neither the agent nor another skill can start it, and its `description` becomes a one-line summary
 for the person reading the slash-command list rather than a trigger list for the agent. Use it when a misfire costs
 more than the catch is worth — a skill that changes how the rest of the session runs, or spends it on a repo-wide
-sweep. See ["Adding a skill"](CONTRIBUTING.md#adding-a-skill) for the consequences that follow.
+sweep.
+
+The flag is a Claude Code field, so it does nothing under another harness. Say it in the body too, where every harness
+reads it: a user-invoked skill opens with **"The user starts it, never you."**, the reason a misfire is expensive, and
+an instruction to stand down if the agent arrived on its own judgment. See ["Adding a
+skill"](CONTRIBUTING.md#adding-a-skill) for why the repo carries no per-harness equivalent.
 
 A skill ships only if its path appears in the `skills` array of `.claude-plugin/plugin.json`. Leaving it out fails
 silently: the skill stays in the repo and simply never reaches plugin users. It must also get a row in the README

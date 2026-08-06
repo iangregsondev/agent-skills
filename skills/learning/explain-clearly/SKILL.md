@@ -140,7 +140,7 @@ Fix what they catch now, not after being asked again.
 ## Turning it on
 
 **The user starts it, never you.** They ask — "explain mode on", "explain clearly", or the skill by name — or their
-own configuration holds it on for every session.
+own configuration holds it on for every session. If you reached this file on your own judgment, say so and stand down.
 
 Say it's on in one short line — _"Explain mode on."_ — and then get on with the answer. Once is enough; after that the
 mode is not the subject.
