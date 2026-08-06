@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  # A `push` event that never dispatches a run is not retried and cannot be replayed,
+  # so a release dropped that way stays dropped. This is the only lever to ask for it.
+  workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -11,6 +14,10 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    # The dispatch offers every branch holding this file, and changesets versions
+    # whichever ref is checked out — from anywhere but main it would version the wrong
+    # tree and consume the changeset files doing it.
+    if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
       pull-requests: write
