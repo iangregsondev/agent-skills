@@ -33,6 +33,21 @@ first appearance of a name, acronym, flag, protocol or library carries its own d
 > **Explained:** "Set up split-horizon DNS — one name server that answers the same question differently depending on
 > who asks, so machines inside the network get the internal address and everyone else gets the public one."
 
+### Use the project's own words
+
+Where a project keeps a `CONTEXT.md`, that file records its **ubiquitous language**: the one vocabulary used
+identically in conversation, in the documentation and in the code, so a word means the same thing wherever it appears.
+Read it once when this skill activates, not once per answer.
+
+- **Its exact terms**, over a synonym you coin or a more common industry word you happen to prefer.
+- **Defined on first use as the shared name** — "a _widget batch_ — the `CONTEXT.md` term for a group of widgets
+  released together".
+- **A recorded term that is ambiguous or wrong gets said out loud**, with the alternative named. Substitute it silently
+  and the reader ends up holding two vocabularies and translating between them — and the project's term is usually the
+  identifier name too, so an explanation that renames it no longer greps.
+- **No `CONTEXT.md`, no rule** — define terms in your own words as above, and leave finding or writing one to another
+  skill.
+
 ### Concrete before abstract
 
 Lead with the real command, the real file, the specific case; generalize after. An abstraction on its own leaves them
@@ -44,6 +59,27 @@ _Just, simply, handle, wire up, hook into, take care of, set up appropriately, c
 step in place of describing it. Replace it with the literal steps or the literal configuration. If you can't, you have
 found something you haven't worked out yet — say that instead, because a verb papering over it reads as a step they
 should already know.
+
+### Build the sentences the way ASD-STE100 does
+
+ASD-STE100 Simplified Technical English is a controlled language written for aircraft maintenance manuals — text that
+must be unambiguous to a reader whose first language is not English and who is working under pressure. It has two
+halves. **Take the writing rules; leave the dictionary** — the 900 approved words are the half people assume STE means,
+and the half that would force ordinary words into awkward paraphrase for an audience it was never calibrated for.
+
+- **One instruction per sentence.** A sentence carrying three makes the reader hold two while they do the first.
+- **About 20 words in a procedural sentence, 25 in a descriptive one.**
+- **Active voice, actor named.** "The release workflow bumps the version", not "the version is bumped" — the passive
+  drops whoever does the work, and who does it is often the part they were missing.
+- **The verb, not a noun made from it.** "Validate the manifest", not "perform a validation of the manifest".
+- **One term for one thing, every time.** Never vary the wording for variety: a different word signals a different
+  thing, so "the session store", "the store" and "the cache" across four paragraphs leave the reader unable to tell
+  whether that is one thing or three. _Define every term on first use_ does not catch this, because each name was
+  defined the first time it appeared.
+- **Keep the articles and the relative pronouns.** "The file that the loader reads", not "file loader reads".
+
+STE permits technical names and technical verbs beyond its dictionary, so it does not fight _define every term on first
+use_: the technical term stays exactly as it is, and the sentence explaining it gets simpler.
 
 ### Say why, not only what
 
@@ -87,12 +123,13 @@ people get stuck on and ask about that part.
 
 ## Before you send
 
-Four questions, every answer, and answering them costs less than the round trip they prevent:
+Five questions, every answer, and answering them costs less than the round trip they prevent:
 
 1. Any term used before it was defined?
 2. Any hand-waving verb still standing in for a step?
 3. Any step with no stated purpose?
-4. Could they act on this without asking a follow-up?
+4. Any sentence carrying more than one instruction, or any thing named two different ways?
+5. Could they act on this without asking a follow-up?
 
 Fix what they catch now, not after being asked again.
 
