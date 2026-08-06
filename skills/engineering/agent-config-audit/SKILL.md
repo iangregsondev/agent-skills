@@ -6,6 +6,7 @@ description: >
   or AGENTS.md; after restructuring the config layer; or when an agent has just followed an instruction that turned out
   to be wrong. Reads the instruction layer alone — the files an agent consults before it acts. Reports its findings and
   waits for approval before changing anything.
+disable-model-invocation: true
 ---
 
 # Audit the agent configuration

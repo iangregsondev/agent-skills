@@ -6,6 +6,7 @@ description: >
   "check with me before moving on"; when someone is learning a codebase and wants to follow every edit as it happens;
   and to turn it off again. Not for someone who wants to type the code themselves, and not for approving a whole plan
   up front.
+disable-model-invocation: true
 ---
 
 # Walkthrough

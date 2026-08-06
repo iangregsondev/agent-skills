@@ -2,9 +2,9 @@
 name: explain-clearly
 description: >
   Explain so it lands the first time, in a register the user can act on without coming back to ask again. Use when
-  they ask for "explain mode" or to "explain clearly"; unprompted the moment they signal confusion — "I don't
-  understand", "what does that mean", "explain that again", or that an answer was too terse, too abstract or skipped
-  steps; and when they turn it off again. Covers explanations, designs and debugging reasoning, not one-line lookups.
+  they ask for "explain mode" or to "explain clearly", when their own configuration turns it on, and when they turn
+  it off again. Covers explanations, designs and debugging reasoning, not one-line lookups.
+disable-model-invocation: true
 ---
 
 # Explain clearly
@@ -135,10 +135,8 @@ Fix what they catch now, not after being asked again.
 
 ## Turning it on
 
-- **Asked for** — "explain mode on", "explain clearly", or the skill by name.
-- **Unprompted, at any sign of confusion** — "I don't understand", "what does that mean", "explain that again", or
-  pushback that an answer was too terse, too abstract or skipped a step. This is the trigger that matters: someone who
-  has already had to ask twice shouldn't also have to know the name of a skill.
+**The user starts it, never you.** They ask — "explain mode on", "explain clearly", or the skill by name — or their
+own configuration holds it on for every session.
 
 Say it's on in one short line — _"Explain mode on."_ — and then get on with the answer. Once is enough; after that the
 mode is not the subject.

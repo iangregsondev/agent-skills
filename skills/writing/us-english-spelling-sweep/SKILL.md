@@ -5,6 +5,7 @@ description: >
   identifier renames and string edits confirmed one at a time. Use when the user asks to check spelling or grammar
   across a repo, wants a consistent pass after spotting a single UK spelling, or is settling a project's language
   before a release or handoff.
+disable-model-invocation: true
 ---
 
 # Sweep to US English

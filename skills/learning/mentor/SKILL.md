@@ -7,6 +7,7 @@ description: >-
   me", "let me drive", "guide me, don't take over", "don't write it, help me write
   it"), or is learning a language or framework and wants to type it themselves. Not
   for someone who wants the code explained while you still write it.
+disable-model-invocation: true
 ---
 
 # Mentor
