@@ -1,6 +1,6 @@
 {
   "name": "explain-clearly",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "The agent explains in full the first time, so the follow-up asking it to explain again never has to happen.",
   "keywords": [
