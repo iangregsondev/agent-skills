@@ -1,5 +1,12 @@
 # dep-updates-combiner
 
+## 1.0.1
+
+### Patch Changes
+
+- [#47](https://github.com/iangregsondev/agent-skills/pull/47) [`d93adfb`](https://github.com/iangregsondev/agent-skills/commit/d93adfbaa26eeb1198fcf9ccf664e584f6aa7b1b) Thanks [@iangregsondev](https://github.com/iangregsondev)! - Say "Settled when" for the condition that ends a step, matching every other skill in this repo. This one said "Done
+  when" — one thing under two names across the set, which is the drift the skills themselves warn about.
+
 ## 1.0.0
 
 ### Major Changes

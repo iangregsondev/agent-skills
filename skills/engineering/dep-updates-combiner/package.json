@@ -1,6 +1,6 @@
 {
   "name": "dep-updates-combiner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Combines multiple open dependency-update PRs into one branch and one PR, so CI runs once.",
   "keywords": [

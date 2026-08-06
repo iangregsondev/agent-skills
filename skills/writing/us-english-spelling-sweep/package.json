@@ -1,6 +1,6 @@
 {
   "name": "us-english-spelling-sweep",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Sweep a repository to US English, reporting every finding before it changes anything.",
   "keywords": [

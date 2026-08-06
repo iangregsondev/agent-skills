@@ -1,6 +1,6 @@
 {
   "name": "agent-config-audit",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Audit a repository's agent configuration for dead references, dead rules, broken hooks, and stale claims.",
   "keywords": [
