@@ -1,6 +1,6 @@
 {
   "name": "walkthrough",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "The agent makes one change at a time, explains it, and waits for the user's understanding before the next.",
   "keywords": [
