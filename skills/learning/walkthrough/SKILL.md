@@ -1,11 +1,9 @@
 ---
 name: walkthrough
 description: >
-  Walk the user through the work one change at a time — the real lines shown and the reasoning explained, then a stop
-  for their understanding before the next change. Use when asked to "walk me through it", "explain as you go", or
-  "check with me before moving on"; when someone is learning a codebase and wants to follow every edit as it happens;
-  and to turn it off again. Not for someone who wants to type the code themselves, and not for approving a whole plan
-  up front.
+  Make one change at a time — the real lines shown and the reasoning explained — then stop for the user's understanding
+  before the next change.
+disable-model-invocation: true
 ---
 
 # Walkthrough
@@ -20,6 +18,9 @@ They still get the code written for them; that is the whole difference from hand
 the size of each step and who decides it has been taken.
 
 Only changes are gated. Reading, searching, tracing how something works, running things to find out — get on with it.
+
+**The user starts it, never you.** Gating every change for someone who never asked for gates spends their session on
+stops they did not want. If you reached this file on your own judgment, say so and stand down.
 
 ## Say it is on
 

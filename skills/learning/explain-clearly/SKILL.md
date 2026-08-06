@@ -1,10 +1,9 @@
 ---
 name: explain-clearly
 description: >
-  Explain so it lands the first time, in a register the user can act on without coming back to ask again. Use when
-  they ask for "explain mode" or to "explain clearly"; unprompted the moment they signal confusion — "I don't
-  understand", "what does that mean", "explain that again", or that an answer was too terse, too abstract or skipped
-  steps; and when they turn it off again. Covers explanations, designs and debugging reasoning, not one-line lookups.
+  Explain so it lands the first time, in a register the user can act on without coming back to ask again. Covers
+  explanations, designs and debugging reasoning, not one-line lookups.
+disable-model-invocation: true
 ---
 
 # Explain clearly
@@ -123,22 +122,25 @@ people get stuck on and ask about that part.
 
 ## Before you send
 
-Five questions, every answer, and answering them costs less than the round trip they prevent:
+Six questions, every answer, and answering them costs less than the round trip they prevent:
 
 1. Any term used before it was defined?
 2. Any hand-waving verb still standing in for a step?
 3. Any step with no stated purpose?
 4. Any sentence carrying more than one instruction, or any thing named two different ways?
-5. Could they act on this without asking a follow-up?
+5. Any abstraction with no instance under it, or any gap crossed without being named?
+6. Could they act on this without asking a follow-up?
+
+Six is the ceiling, not one question per rule. Shape first, the project's own words, depth on offer and the pointed
+check have no question of their own — question 6 is what catches them, which is why it gets answered as a real check
+rather than read as a closing formality.
 
 Fix what they catch now, not after being asked again.
 
 ## Turning it on
 
-- **Asked for** — "explain mode on", "explain clearly", or the skill by name.
-- **Unprompted, at any sign of confusion** — "I don't understand", "what does that mean", "explain that again", or
-  pushback that an answer was too terse, too abstract or skipped a step. This is the trigger that matters: someone who
-  has already had to ask twice shouldn't also have to know the name of a skill.
+**The user starts it, never you.** They ask — "explain mode on", "explain clearly", or the skill by name — or their
+own configuration holds it on for every session. If you reached this file on your own judgment, say so and stand down.
 
 Say it's on in one short line — _"Explain mode on."_ — and then get on with the answer. Once is enough; after that the
 mode is not the subject.

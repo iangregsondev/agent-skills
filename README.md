@@ -67,6 +67,15 @@ name is namespaced — `/iangregson-skills:tdd` rather than `/tdd`.
 Invocation is a model judgment, not a keyword match. To make a skill fire
 reliably in a given repo, use its vocabulary in that repo's `CLAUDE.md`.
 
+Five fire by name only: `mentor`, `walkthrough`, `explain-clearly`,
+`us-english-spelling-sweep` and `agent-config-audit`. Each one changes how the
+whole session runs, or spends it on a repo-wide sweep, so the decision to start
+one is yours. They carry `disable-model-invocation: true`, which keeps them out
+of the list the agent chooses from — a Claude Code field, so under another
+harness they can still fire on their own. Each one therefore says the same thing
+in its body, where every harness reads it, and stands down if it was not you who
+started it.
+
 ## Structure
 
 ```

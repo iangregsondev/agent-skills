@@ -182,8 +182,10 @@ describe.each(skills.map((p) => [relative(ROOT, p), p]))("%s", (rel, path) => {
   const assumed = new Set(assumes.map((entry) => entry.toLowerCase()));
 
   it("names in its description whatever it assumes", () => {
-    // The description decides whether the skill fires. One that reads as portable
-    // while assuming a stack is one that fires in projects it cannot help.
+    // The description is what someone reads before reaching for the skill, and for a
+    // model-invoked one it also decides whether the skill fires at all. Either way, one
+    // that reads as portable while assuming a stack sends its reader to a skill that
+    // cannot help them.
     const unstated = assumes.filter(
       (entry) => !fields.description.toLowerCase().includes(entry.toLowerCase()),
     );

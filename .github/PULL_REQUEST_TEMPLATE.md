@@ -27,4 +27,10 @@ For a new or changed skill:
       the PR says why the portable version would be worse
 - [ ] Its path is listed in the `skills` array of `.claude-plugin/plugin.json`
       (or is deliberately held back)
-- [ ] The `description` lists one trigger per branch, with no synonym padding
+- [ ] The `description` matches how the skill is invoked — one trigger per
+      branch with no synonym padding if the agent can fire it, or a one-line
+      summary with the triggers stripped if it is user-invoked
+      (`disable-model-invocation: true`)
+- [ ] A user-invoked skill says so in its body too — who starts it, why a
+      misfire is expensive, and to stand down if the agent arrived on its own
+      judgment. The frontmatter flag is Claude Code only; the body travels

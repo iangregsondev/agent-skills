@@ -48,9 +48,20 @@ predictability, and none of them protect portability.
 A skill genuinely about one stack is fine. It lists what it takes for granted under `metadata.assumes` in its
 frontmatter — comma-separated, and `metadata` because that is where the Agent Skills spec puts fields it does not
 define. Listed names stop counting as leaks in `tests/skills.test.ts`; unlisted ones still fail, and the `description`
-has to name each one, since the description decides when the skill fires. Prefer the version that assumes nothing
-where one exists — the list is for skills that would be worse written portably, not a shortcut when portable is
-harder to write.
+has to name each one, since the description is what sends anyone to the skill — the agent when it is model-invoked, a
+person reading the slash-command list when it is not. Prefer the version that assumes nothing where one exists — the
+list is for skills that would be worse written portably, not a shortcut when portable is harder to write.
+
+A skill is model-invoked by default. `disable-model-invocation: true` makes it user-invoked: it leaves the list the
+harness injects, so neither the agent nor another skill can start it, and its `description` becomes a one-line summary
+for the person reading the slash-command list rather than a trigger list for the agent. Use it when a misfire costs
+more than the catch is worth — a skill that changes how the rest of the session runs, or spends it on a repo-wide
+sweep.
+
+The flag is a Claude Code field, so it does nothing under another harness. Say it in the body too, where every harness
+reads it: a user-invoked skill opens with **"The user starts it, never you."**, the reason a misfire is expensive, and
+an instruction to stand down if the agent arrived on its own judgment. See ["Adding a
+skill"](CONTRIBUTING.md#adding-a-skill) for why the repo carries no per-harness equivalent.
 
 A skill ships only if its path appears in the `skills` array of `.claude-plugin/plugin.json`. Leaving it out fails
 silently: the skill stays in the repo and simply never reaches plugin users. It must also get a row in the README
