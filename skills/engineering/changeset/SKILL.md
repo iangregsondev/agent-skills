@@ -71,6 +71,15 @@ Optional body: what changed and why. For a breaking change, describe the migrati
 Quote the package names — an unquoted value starting with `@` is not valid YAML. Multiple packages get one line each,
 and their bumps may differ.
 
+The body is not read where you write it. It is copied verbatim into `CHANGELOG.md`, and into whatever the project
+publishes from there — release notes, a package page, a docs site. Every one of those renders it, so write a body that
+survives rendering.
+
+One failure is invisible in review: `<anything in angle brackets>` reads as an HTML tag. A renderer that sanitizes
+deletes the tag and its contents; one that doesn't emits an element nothing displays. Either way the words are gone
+from the page while the source still reads correctly. Wrap placeholders in backticks — `<why it matters>` — and they
+render literally.
+
 ## 5. Verify
 
 Changesets ships its own check: `changeset status --since=<base-branch>` prints what would be released and exits
