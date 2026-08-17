@@ -25,7 +25,8 @@ Which route applies is a property of the source repo, not a choice we make:
 - **Skill** — installed as loose, unnamespaced files (skills.sh and equivalents),
   per project or globally, and editable once copied in.
 - **Plugin** — installed as a managed, namespaced (`plugin:skill`) bundle from a
-  repo that ships a plugin marketplace manifest, and updated rather than edited.
+  marketplace manifest that lists it, which may sit in the plugin's own repo or
+  in a separate catalogue, and updated rather than edited.
 - **Both** — the repo supports either route; pick by whether you want editable
   files or a namespaced, always-current copy.
 

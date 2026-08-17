@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { describe, expect, it } from "vite-plus/test";
 
@@ -109,32 +109,16 @@ it("a skill cannot exist without a plugin manifest to publish it", () => {
     expect(promoted, "skills/ exists but .claude-plugin/plugin.json does not").not.toBeNull();
 });
 
-// The marketplace entry may restate anything plugin.json already carries. Nothing at
-// install time reconciles the two, so a copy left behind drifts silently — which is
-// how the keywords came to advertise a plugin two skills smaller than it was.
-//
-// `skills` is the costly one: with this marketplace's root `source: "./"`, paths
-// listed in the entry become the complete set for it, so a stale copy silently stops
-// shipping every skill it forgot. The entry omits it today; this holds if that changes.
-describe(".claude-plugin/marketplace.json", () => {
-  const marketplace = JSON.parse(
-    readFileSync(join(ROOT, ".claude-plugin/marketplace.json"), "utf8"),
-  );
-  const manifest = JSON.parse(readFileSync(join(ROOT, ".claude-plugin/plugin.json"), "utf8"));
-  const entry = marketplace.plugins?.find((p: { name: string }) => p.name === manifest.name);
-
-  it("lists the plugin this repo actually builds", () => {
-    expect(entry, `no entry named "${manifest.name}"`).toBeDefined();
-  });
-
-  // Only fields the entry chooses to duplicate are checked; omitting one is fine —
-  // an absent field inherits, and inheriting is the way to never drift at all.
-  const DUPLICABLE = ["skills", "description", "keywords", "version", "license", "author"];
-
-  it.each(DUPLICABLE)("%s matches plugin.json", (field) => {
-    if (entry?.[field] === undefined) return;
-    expect(entry[field]).toEqual(manifest[field]);
-  });
+// The catalogue at iangregsondev/claude-plugins is the one marketplace offering this
+// plugin. A manifest here would be a second, and both would offer the name
+// `iangregson-skills` — of which only one can be installed at a time, with nothing
+// telling a user which one they have. Nothing local catches that: the plugin still
+// installs, every check here stays green, and the damage lands on users only.
+it("publishes no marketplace of its own", () => {
+  expect(
+    existsSync(join(ROOT, ".claude-plugin/marketplace.json")),
+    "found .claude-plugin/marketplace.json — the catalogue at iangregsondev/claude-plugins lists this plugin",
+  ).toBe(false);
 });
 
 describe.each(skills.map((p) => [relative(ROOT, p), p]))("%s", (rel, path) => {
