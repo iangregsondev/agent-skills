@@ -167,15 +167,14 @@ Four rules specific to this repo:
    it exists. Both are checked by `tests/skills.test.ts`, because both fail silently:
    the repo stays green either way.
 
-   `.claude-plugin/marketplace.json` is a third file describing the same plugin, and
-   its entry may restate any field from `plugin.json` — `keywords`, `description`,
-   even `skills`. Nothing reconciles the copies at install time. **Prefer omitting a
-   field there and letting `plugin.json` be the single source**; a duplicated `skills`
-   array is the dangerous one, since this marketplace's root `source: "./"` makes the
-   entry's list the complete set, so anything it forgets stops shipping. Whatever the
-   entry does duplicate, the tests assert it matches.
+   `.claude-plugin/plugin.json` is the only manifest this repo owns. The marketplace
+   that offers the plugin lives in a separate catalogue,
+   [iangregsondev/claude-plugins](https://github.com/iangregsondev/claude-plugins),
+   which points at this repo by name and reads `plugin.json` from it. So registering a
+   skill is finished here — there is no second list to keep in step, and nothing to
+   change in the catalogue when skills come and go.
 
-   **Never hand-edit that manifest's `version`.** Claude Code uses it as the cache
+   **Never hand-edit `plugin.json`'s `version`.** Claude Code uses it as the cache
    key for update detection: if it does not change, `/plugin update` tells users
    they are already up to date and they never receive the new skill. Because
    skills version independently, there is no repo-level number for it to mirror —

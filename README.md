@@ -51,11 +51,14 @@ npx skills add iangregsondev/agent-skills --skill tdd # just one
 ```
 
 **As a Claude Code plugin** — read-only, always current, and namespaced so it
-can't collide with a skill of the same name elsewhere:
+can't collide with a skill of the same name elsewhere. It is listed in
+[iangregsondev/claude-plugins](https://github.com/iangregsondev/claude-plugins),
+a catalogue of every plugin I publish, each maintained in its own repository. Add
+that marketplace once and install from it by name:
 
 ```
-/plugin marketplace add iangregsondev/agent-skills
-/plugin install iangregson-skills
+/plugin marketplace add iangregsondev/claude-plugins
+/plugin install iangregson-skills@iangregson-plugins
 ```
 
 ## Invoking a skill

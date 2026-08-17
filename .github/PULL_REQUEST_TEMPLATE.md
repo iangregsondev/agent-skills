@@ -17,7 +17,7 @@
 
 - [ ] `vp run ready` passes
 - [ ] If this adds or changes a skill, a changeset is included (`vpx changeset`)
-- [ ] If a plugin manifest exists, `claude plugin validate . --strict` passes
+- [ ] If a plugin manifest exists, `vp run validate:plugin` passes
 
 For a new or changed skill:
 
