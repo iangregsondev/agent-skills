@@ -83,7 +83,7 @@ Four rules specific to this repo:
 1. **Try to keep skills tool-agnostic.** Aim for a skill that names no language,
    test runner, package manager or directory layout, deferring every tool
    decision to the project it gets installed into. State the discipline, not the
-   toolchain. See the "Authoring skills" section of [CLAUDE.md](CLAUDE.md).
+   toolchain. See the "Authoring skills" section of [`.claude/CLAUDE.md`](.claude/CLAUDE.md).
 
    Some skills are genuinely about one stack, and those are welcome. Say what the
    skill takes for granted and the check makes room for it:
@@ -169,7 +169,7 @@ Four rules specific to this repo:
 
    `.claude-plugin/plugin.json` is the only manifest this repo owns. The marketplace
    that offers the plugin lives in a separate catalogue,
-   [iangregsondev/claude-plugins](https://github.com/iangregsondev/claude-plugins),
+   [iangregsondev/claude-marketplace](https://github.com/iangregsondev/claude-marketplace),
    which points at this repo by name and reads `plugin.json` from it. So registering a
    skill is finished here — there is no second list to keep in step, and nothing to
    change in the catalogue when skills come and go.

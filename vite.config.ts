@@ -17,13 +17,11 @@ export default defineConfig({
       // manifest replays a stale pass — which is how a broken plugin.json
       // once got a green light locally and only failed in CI.
       //
-      // No --strict. The plugin root is this repo's workspace root, so CLAUDE.md
-      // sits beside plugin.json and the validator warns it is not shipped to
-      // plugin users — true, and not resolvable while the manifest stays at the
-      // root. --strict fails the run on it. Errors still fail without the flag,
-      // so a malformed manifest or a skills path pointing nowhere is still caught.
+      // Validates a copy of what git ships, so a gitignored CLAUDE.local.md at the
+      // root cannot fail it — see the script. CLAUDE.md lives at .claude/CLAUDE.md
+      // for the same reason: the validator rejects one at the plugin root.
       "validate:plugin": {
-        command: "claude plugin validate .",
+        command: "node scripts/validate-plugin.mjs",
         cache: false,
       },
       // What the release workflow runs to produce a release pull request.

@@ -88,7 +88,7 @@ function readPromoted(): string[] | null {
 const promoted = readPromoted();
 
 // Tool names a skill must not assume — the consuming project decides these.
-// See the "Authoring skills" section of CLAUDE.md.
+// See the "Authoring skills" section of .claude/CLAUDE.md.
 const FORBIDDEN = [
   "npm",
   "pnpm",
@@ -109,7 +109,7 @@ it("a skill cannot exist without a plugin manifest to publish it", () => {
     expect(promoted, "skills/ exists but .claude-plugin/plugin.json does not").not.toBeNull();
 });
 
-// The catalogue at iangregsondev/claude-plugins is the one marketplace offering this
+// The catalogue at iangregsondev/claude-marketplace is the one marketplace offering this
 // plugin. A manifest here would be a second, and both would offer the name
 // `iangregson-skills` — of which only one can be installed at a time, with nothing
 // telling a user which one they have. Nothing local catches that: the plugin still
@@ -117,7 +117,7 @@ it("a skill cannot exist without a plugin manifest to publish it", () => {
 it("publishes no marketplace of its own", () => {
   expect(
     existsSync(join(ROOT, ".claude-plugin/marketplace.json")),
-    "found .claude-plugin/marketplace.json — the catalogue at iangregsondev/claude-plugins lists this plugin",
+    "found .claude-plugin/marketplace.json — the catalogue at iangregsondev/claude-marketplace lists this plugin",
   ).toBe(false);
 });
 
