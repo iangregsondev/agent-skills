@@ -38,6 +38,12 @@ The `npx` in the README install snippets is what consumers type in their own pro
 
 Everything above the `VITE PLUS END` marker is generated. Edits there are overwritten; put repo-specific rules here.
 
+# Where this file lives
+
+This is `.claude/CLAUDE.md`, not a root `CLAUDE.md`, on purpose. The repo root is the plugin root, and `claude plugin
+validate --strict` fails on a `CLAUDE.md` there, because a plugin cannot ship project context that way. Claude Code
+loads this path as project instructions all the same. Do not move it to the root.
+
 # Authoring skills
 
 Skills live at `skills/<bucket>/<name>/SKILL.md` and are published for other people's projects, so the default is to
@@ -61,14 +67,14 @@ sweep.
 The flag is a Claude Code field, so it does nothing under another harness. Say it in the body too, where every harness
 reads it: a user-invoked skill opens with **"The user starts it, never you."**, the reason a misfire is expensive, and
 an instruction to stand down if the agent arrived on its own judgment. See ["Adding a
-skill"](CONTRIBUTING.md#adding-a-skill) for why the repo carries no per-harness equivalent.
+skill"](../CONTRIBUTING.md#adding-a-skill) for why the repo carries no per-harness equivalent.
 
 A skill ships only if its path appears in the `skills` array of `.claude-plugin/plugin.json`. Leaving it out fails
 silently: the skill stays in the repo and simply never reaches plugin users. It must also get a row in the README
 skills table, or nobody browsing the repo finds it. Both are covered by `tests/skills.test.ts`, so run the tests.
 
 This repo publishes no marketplace of its own. The plugin is listed in the standalone catalogue at
-[iangregsondev/claude-plugins](https://github.com/iangregsondev/claude-plugins), which reads `plugin.json` from here —
+[iangregsondev/claude-marketplace](https://github.com/iangregsondev/claude-marketplace), which reads `plugin.json` from here —
 so `plugin.json` is the only manifest this repo owns, and nothing here needs updating when the catalogue changes.
 
 # Versioning
@@ -81,6 +87,6 @@ Skills version independently, through changesets, and nothing about a version is
 - Never touch the `version` in `.claude-plugin/plugin.json`, a skill's `CHANGELOG.md`, or a released skill version. The
   release workflow writes all three.
 
-[CONTRIBUTING.md](CONTRIBUTING.md) is the full account of this repo's rules — the manifest-as-cache-key reasoning, the
+[CONTRIBUTING.md](../CONTRIBUTING.md) is the full account of this repo's rules — the manifest-as-cache-key reasoning, the
 unscoped package names, the release and dry-run tasks. Read it before changing anything about how skills are packaged
 or released; this file only carries the parts that are easiest to walk past.
