@@ -56,7 +56,7 @@ jobs:
 
       - name: Create Release Pull Request
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           version: vp run release:version
           publish: vpx changeset tag
